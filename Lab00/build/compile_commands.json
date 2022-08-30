@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/home/user/Desktop/Data-Structures/Lab00/build",
+  "command": "/usr/bin/g++ -Dapplibrary_EXPORTS  -g -fPIC -std=c++17 -o CMakeFiles/applibrary.dir/whattotest.cpp.o -c /home/user/Desktop/Data-Structures/Lab00/whattotest.cpp",
+  "file": "/home/user/Desktop/Data-Structures/Lab00/whattotest.cpp"
+},
+{
+  "directory": "/home/user/Desktop/Data-Structures/Lab00/build",
+  "command": "/usr/bin/g++   -g -std=c++17 -DGTEST_HAS_PTHREAD=1 -o CMakeFiles/runTests.dir/tests.cpp.o -c /home/user/Desktop/Data-Structures/Lab00/tests.cpp",
+  "file": "/home/user/Desktop/Data-Structures/Lab00/tests.cpp"
+},
+{
+  "directory": "/home/user/Desktop/Data-Structures/Lab00/build",
+  "command": "/usr/bin/g++   -g -std=c++17 -o CMakeFiles/runMain.dir/main.cpp.o -c /home/user/Desktop/Data-Structures/Lab00/main.cpp",
+  "file": "/home/user/Desktop/Data-Structures/Lab00/main.cpp"
+}
+]

@@ -13,8 +13,12 @@ WidgetWithArrays::WidgetWithArrays() : m_count(0)
  
 void WidgetWithArrays::storeInteger(int a)
 {
-    //TODO:
+    int i = 0;
+    while (m_array[i] != 0) {
+        i++;
+    }
 
+    m_array[i] = a;
 }
 
 int WidgetWithArrays::sum()
