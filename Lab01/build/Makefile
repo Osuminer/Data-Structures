@@ -57,10 +57,17 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
+<<<<<<< HEAD
 CMAKE_SOURCE_DIR = /home/connor/Desktop/Data-Structures/Lab01
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/connor/Desktop/Data-Structures/Lab01/build
+=======
+CMAKE_SOURCE_DIR = /home/user/Desktop/Data-Structures/Lab01
+
+# The top-level build directory on which CMake was run.
+CMAKE_BINARY_DIR = /home/user/Desktop/Data-Structures/Lab01/build
+>>>>>>> 77a0f445d83f442a11c70c141cd9f5749db33b72
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +94,15 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
+<<<<<<< HEAD
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/connor/Desktop/Data-Structures/Lab01/build/CMakeFiles /home/connor/Desktop/Data-Structures/Lab01/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/connor/Desktop/Data-Structures/Lab01/build/CMakeFiles 0
+=======
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/user/Desktop/Data-Structures/Lab01/build/CMakeFiles /home/user/Desktop/Data-Structures/Lab01/build//CMakeFiles/progress.marks
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/user/Desktop/Data-Structures/Lab01/build/CMakeFiles 0
+>>>>>>> 77a0f445d83f442a11c70c141cd9f5749db33b72
 .PHONY : all
 
 # The main clean target
