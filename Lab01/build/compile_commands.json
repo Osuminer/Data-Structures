@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/home/connor/Desktop/Data-Structures/Lab01/build",
+  "command": "/usr/bin/g++   -g -std=c++17 -o CMakeFiles/applibrary.dir/LinkedList.cpp.o -c /home/connor/Desktop/Data-Structures/Lab01/LinkedList.cpp",
+  "file": "/home/connor/Desktop/Data-Structures/Lab01/LinkedList.cpp"
+},
+{
+  "directory": "/home/connor/Desktop/Data-Structures/Lab01/build",
+  "command": "/usr/bin/g++   -g -std=c++17 -DGTEST_HAS_PTHREAD=1 -o CMakeFiles/runTests.dir/tests.cpp.o -c /home/connor/Desktop/Data-Structures/Lab01/tests.cpp",
+  "file": "/home/connor/Desktop/Data-Structures/Lab01/tests.cpp"
+},
+{
+  "directory": "/home/connor/Desktop/Data-Structures/Lab01/build",
+  "command": "/usr/bin/g++   -g -std=c++17 -o CMakeFiles/runMain.dir/main.cpp.o -c /home/connor/Desktop/Data-Structures/Lab01/main.cpp",
+  "file": "/home/connor/Desktop/Data-Structures/Lab01/main.cpp"
+}
+]

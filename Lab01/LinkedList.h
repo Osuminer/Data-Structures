@@ -80,6 +80,7 @@ public:
 	std::string toString() const override;
 private:
 	Node * m_head;
+	Node * m_tail;// this is optional to use, but it does make things easier
 };
 
 

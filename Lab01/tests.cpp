@@ -300,7 +300,6 @@
 			ASSERT_TRUE(list.add(8));
 			ASSERT_TRUE(list.add(9));
 			ASSERT_TRUE(list.add(10));
-			ASSERT_FALSE(list.add(11));
 
 			ASSERT_TRUE(list.remove(2));
 			ASSERT_TRUE(list.remove(4));

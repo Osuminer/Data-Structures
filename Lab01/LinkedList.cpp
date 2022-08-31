@@ -46,6 +46,7 @@ Node * Node::getNext() const
 Node::~Node()
 {
 	std::cout << "Deleting node with value " << m_value << std::endl;
+	delete m_next;
 	//TODO - hint, you can recursively handle this which would require some code
 	// Otherwise you need to delete each node individuall in the owner of the Nodes (i.e. the LinkedList)
 }
@@ -57,13 +58,20 @@ PointerBasedLinkedList::PointerBasedLinkedList() : ILinkedList(), m_head(nullptr
 /** Returns true  if list is empty, otherwise true */
 bool PointerBasedLinkedList::isEmpty() const
 {
+	if (m_head == nullptr) {
+		return true;
+	}
+
 	return false;
-	//TODO
 }
 /** Adds a value to the LinkedList.  Return true if able to, otherwise false */
 bool PointerBasedLinkedList::add(int val)
 {
-	return false;
+	Node newNode(val, m_head);
+
+	m_head = &newNode;
+
+	return true;
 	//TODO
 }
 /** Remove a value to the LinkedList.  Return true if able to, otherwise false.
