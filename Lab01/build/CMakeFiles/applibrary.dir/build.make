@@ -53,17 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-<<<<<<< HEAD
-CMAKE_SOURCE_DIR = /home/connor/Desktop/Data-Structures/Lab01
-
-# The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/connor/Desktop/Data-Structures/Lab01/build
-=======
 CMAKE_SOURCE_DIR = /home/user/Desktop/Data-Structures/Lab01
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/user/Desktop/Data-Structures/Lab01/build
->>>>>>> 77a0f445d83f442a11c70c141cd9f5749db33b72
 
 # Include any dependencies generated for this target.
 include CMakeFiles/applibrary.dir/depend.make
@@ -79,18 +72,6 @@ include CMakeFiles/applibrary.dir/flags.make
 CMakeFiles/applibrary.dir/LinkedList.cpp.o: CMakeFiles/applibrary.dir/flags.make
 CMakeFiles/applibrary.dir/LinkedList.cpp.o: ../LinkedList.cpp
 CMakeFiles/applibrary.dir/LinkedList.cpp.o: CMakeFiles/applibrary.dir/compiler_depend.ts
-<<<<<<< HEAD
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/connor/Desktop/Data-Structures/Lab01/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/applibrary.dir/LinkedList.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/applibrary.dir/LinkedList.cpp.o -MF CMakeFiles/applibrary.dir/LinkedList.cpp.o.d -o CMakeFiles/applibrary.dir/LinkedList.cpp.o -c /home/connor/Desktop/Data-Structures/Lab01/LinkedList.cpp
-
-CMakeFiles/applibrary.dir/LinkedList.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/applibrary.dir/LinkedList.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/connor/Desktop/Data-Structures/Lab01/LinkedList.cpp > CMakeFiles/applibrary.dir/LinkedList.cpp.i
-
-CMakeFiles/applibrary.dir/LinkedList.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/applibrary.dir/LinkedList.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/connor/Desktop/Data-Structures/Lab01/LinkedList.cpp -o CMakeFiles/applibrary.dir/LinkedList.cpp.s
-=======
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/user/Desktop/Data-Structures/Lab01/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/applibrary.dir/LinkedList.cpp.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/applibrary.dir/LinkedList.cpp.o -MF CMakeFiles/applibrary.dir/LinkedList.cpp.o.d -o CMakeFiles/applibrary.dir/LinkedList.cpp.o -c /home/user/Desktop/Data-Structures/Lab01/LinkedList.cpp
 
@@ -101,7 +82,6 @@ CMakeFiles/applibrary.dir/LinkedList.cpp.i: cmake_force
 CMakeFiles/applibrary.dir/LinkedList.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/applibrary.dir/LinkedList.cpp.s"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/user/Desktop/Data-Structures/Lab01/LinkedList.cpp -o CMakeFiles/applibrary.dir/LinkedList.cpp.s
->>>>>>> 77a0f445d83f442a11c70c141cd9f5749db33b72
 
 # Object files for target applibrary
 applibrary_OBJECTS = \
@@ -113,11 +93,7 @@ applibrary_EXTERNAL_OBJECTS =
 libapplibrary.a: CMakeFiles/applibrary.dir/LinkedList.cpp.o
 libapplibrary.a: CMakeFiles/applibrary.dir/build.make
 libapplibrary.a: CMakeFiles/applibrary.dir/link.txt
-<<<<<<< HEAD
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/connor/Desktop/Data-Structures/Lab01/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libapplibrary.a"
-=======
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/user/Desktop/Data-Structures/Lab01/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libapplibrary.a"
->>>>>>> 77a0f445d83f442a11c70c141cd9f5749db33b72
 	$(CMAKE_COMMAND) -P CMakeFiles/applibrary.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/applibrary.dir/link.txt --verbose=$(VERBOSE)
 
@@ -130,10 +106,6 @@ CMakeFiles/applibrary.dir/clean:
 .PHONY : CMakeFiles/applibrary.dir/clean
 
 CMakeFiles/applibrary.dir/depend:
-<<<<<<< HEAD
-	cd /home/connor/Desktop/Data-Structures/Lab01/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/connor/Desktop/Data-Structures/Lab01 /home/connor/Desktop/Data-Structures/Lab01 /home/connor/Desktop/Data-Structures/Lab01/build /home/connor/Desktop/Data-Structures/Lab01/build /home/connor/Desktop/Data-Structures/Lab01/build/CMakeFiles/applibrary.dir/DependInfo.cmake --color=$(COLOR)
-=======
 	cd /home/user/Desktop/Data-Structures/Lab01/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/user/Desktop/Data-Structures/Lab01 /home/user/Desktop/Data-Structures/Lab01 /home/user/Desktop/Data-Structures/Lab01/build /home/user/Desktop/Data-Structures/Lab01/build /home/user/Desktop/Data-Structures/Lab01/build/CMakeFiles/applibrary.dir/DependInfo.cmake --color=$(COLOR)
->>>>>>> 77a0f445d83f442a11c70c141cd9f5749db33b72
 .PHONY : CMakeFiles/applibrary.dir/depend
 

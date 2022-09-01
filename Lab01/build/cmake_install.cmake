@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# Install script for directory: /home/connor/Desktop/Data-Structures/Lab01
-=======
 # Install script for directory: /home/user/Desktop/Data-Structures/Lab01
->>>>>>> 77a0f445d83f442a11c70c141cd9f5749db33b72
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -54,9 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-<<<<<<< HEAD
-file(WRITE "/home/connor/Desktop/Data-Structures/Lab01/build/${CMAKE_INSTALL_MANIFEST}"
-=======
 file(WRITE "/home/user/Desktop/Data-Structures/Lab01/build/${CMAKE_INSTALL_MANIFEST}"
->>>>>>> 77a0f445d83f442a11c70c141cd9f5749db33b72
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

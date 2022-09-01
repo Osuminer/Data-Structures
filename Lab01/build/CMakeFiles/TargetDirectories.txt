@@ -1,13 +1,5 @@
-<<<<<<< HEAD
-/home/connor/Desktop/Data-Structures/Lab01/build/CMakeFiles/applibrary.dir
-/home/connor/Desktop/Data-Structures/Lab01/build/CMakeFiles/runTests.dir
-/home/connor/Desktop/Data-Structures/Lab01/build/CMakeFiles/runMain.dir
-/home/connor/Desktop/Data-Structures/Lab01/build/CMakeFiles/edit_cache.dir
-/home/connor/Desktop/Data-Structures/Lab01/build/CMakeFiles/rebuild_cache.dir
-=======
 /home/user/Desktop/Data-Structures/Lab01/build/CMakeFiles/applibrary.dir
 /home/user/Desktop/Data-Structures/Lab01/build/CMakeFiles/runTests.dir
 /home/user/Desktop/Data-Structures/Lab01/build/CMakeFiles/runMain.dir
 /home/user/Desktop/Data-Structures/Lab01/build/CMakeFiles/edit_cache.dir
 /home/user/Desktop/Data-Structures/Lab01/build/CMakeFiles/rebuild_cache.dir
->>>>>>> 77a0f445d83f442a11c70c141cd9f5749db33b72
