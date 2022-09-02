@@ -78,6 +78,8 @@ bool PointerBasedLinkedList::add(int val)
 		m_tail = newNode;
 	}
 
+	m_count++;
+
 	return true;
 }
 /** Remove a value to the LinkedList.  Return true if able to, otherwise false.
@@ -87,7 +89,10 @@ bool PointerBasedLinkedList::remove(int val)
 	Node * curr(m_head);
 	Node * prev(m_head);
 
+	int i = 0;
+
 	while (curr->getItem() != val) {
+		i++;
 		prev = curr;
 		curr = curr->getNext();
 
@@ -96,12 +101,15 @@ bool PointerBasedLinkedList::remove(int val)
 		}
 	}
 
-	prev->setNext(curr->getNext());
+	if (i == 0) {
+		m_head = prev->getNext();
+	} else {
+		prev->setNext(curr->getNext());
+	}
+
+	m_count--;
 
 	return true;
-
-
-	//TODO:
 }
 
 /** Remove  all elements from LinkedList */
@@ -137,26 +145,56 @@ std::string PointerBasedLinkedList::toString() const
 ArrayBasedLinkedList::ArrayBasedLinkedList() : ILinkedList()
 {
     m_count = 0;
+
+	for (int i = 0; i < 10; i++) {
+		m_values[i] = 0;
+	}
 }
 
 bool ArrayBasedLinkedList::isEmpty() const
 {
-	return true;
-	//TODO:
+	if (m_count == 0) {
+		return true;
+	} else {
+		return false;
+	}
 }
 bool ArrayBasedLinkedList::add(int val)
 {
-	//TODO:
-	return false;
+	if (m_count < 10) {
+		m_values[m_count] = val;
+		m_count++;
+		return true;
+	} else {
+		return false;
+	}
 }
 bool ArrayBasedLinkedList::remove(int val)
 {
-	//TODO:
-	return false;
+	if (m_count > 0) {
+		int i = 0;
+		while (m_values[i] != val && i < 10) {
+			i++;
+		}
+
+		if (i == 10) {
+			return false;
+		}
+		
+		m_values[i] = 0;
+		m_count--;
+		return true;
+	} else {
+		return false;
+	}
 }
 void ArrayBasedLinkedList::clear()
 {
-	//TODO:
+	for (int i = 0; i < 10; i++) {
+		m_values[i] = 0;
+	}
+
+	m_count = 0;
 }
 ArrayBasedLinkedList::~ArrayBasedLinkedList()
 {
@@ -166,8 +204,14 @@ ArrayBasedLinkedList::~ArrayBasedLinkedList()
 std::string ArrayBasedLinkedList::toString() const
 {
 	string str = "";
-	
-	//TODO:
+
+	for (int i = 0; i < 10; i++) {
+		if (m_values[i] != 0) {
+			str.append(to_string(m_values[i]) + " ");
+		}
+	}
+
+	str.erase(str.find_last_not_of(' ')+1); 
 
 	return str;
 }
