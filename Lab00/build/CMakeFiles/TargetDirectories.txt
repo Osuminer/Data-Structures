@@ -1,5 +1,0 @@
-/home/user/Desktop/Data-Structures/Lab00/build/CMakeFiles/applibrary.dir
-/home/user/Desktop/Data-Structures/Lab00/build/CMakeFiles/runTests.dir
-/home/user/Desktop/Data-Structures/Lab00/build/CMakeFiles/runMain.dir
-/home/user/Desktop/Data-Structures/Lab00/build/CMakeFiles/edit_cache.dir
-/home/user/Desktop/Data-Structures/Lab00/build/CMakeFiles/rebuild_cache.dir
