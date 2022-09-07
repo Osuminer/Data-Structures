@@ -12,7 +12,7 @@ using namespace std;
 
 ILinkedList::ILinkedList() : m_count(0)
 {
-
+m_count++;
 }
 
 Node::Node() : m_value(-1), m_next(nullptr)
