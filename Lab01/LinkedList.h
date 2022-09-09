@@ -8,7 +8,7 @@ public:
 	ILinkedList();
 
 	/** Returns true  if list is empty, otherwise false */
-	virtual bool isEmpty() const = 0;
+	virtual bool isEmpty() const;
 	/** Adds a value to the LinkedList.  Return true if able to, otherwise false */
 	virtual bool add(int val) = 0;
 	/** Remove a value to the LinkedList.  Return true if able to, otherwise false.
@@ -16,6 +16,7 @@ public:
 	virtual bool remove(int val) = 0;
 	/** Remove  all elements from LinkedList */
 	virtual void clear() = 0;
+
 
 	virtual std::string toString() const = 0;
 
@@ -48,7 +49,7 @@ class ArrayBasedLinkedList : public ILinkedList
 public:
 	ArrayBasedLinkedList();
 	/** Returns true  if list is empty, otherwise false */
-	bool isEmpty() const override;
+	// bool isEmpty() const override;
 	/** Adds a value to the LinkedList.  Return true if able to, otherwise false */
 	bool add(int val) override;
 	/** Remove a value to the LinkedList.  Return true if able to, otherwise false.
@@ -68,7 +69,7 @@ class PointerBasedLinkedList : public ILinkedList
 public:
 	PointerBasedLinkedList();
      /** Returns true  if list is empty, otherwise false */
-	bool isEmpty() const  override;
+	// bool isEmpty() const  override;
 	/** Adds a value to the LinkedList.  Return true if able to, otherwise false */
 	bool add(int val) override;
 	/** Remove a value to the LinkedList.  Return true if able to, otherwise false.

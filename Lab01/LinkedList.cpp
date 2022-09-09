@@ -15,6 +15,15 @@ ILinkedList::ILinkedList() : m_count(0)
 
 }
 
+bool ILinkedList::isEmpty() const
+{
+	if (m_count == 0) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 Node::Node() : m_value(-1), m_next(nullptr)
 {
 
@@ -56,14 +65,14 @@ PointerBasedLinkedList::PointerBasedLinkedList() : ILinkedList(), m_head(nullptr
 	m_tail = m_head;
 }
 /** Returns true  if list is empty, otherwise true */
-bool PointerBasedLinkedList::isEmpty() const
-{
-	if (m_head == nullptr) {
-		return true;
-	}
+// bool PointerBasedLinkedList::isEmpty() const
+// {
+// 	if (m_head == nullptr) {
+// 		return true;
+// 	}
 
-	return false;
-}
+// 	return false;
+// }
 /** Adds a value to the LinkedList.  Return true if able to, otherwise false */
 bool PointerBasedLinkedList::add(int val)
 {
@@ -120,6 +129,8 @@ void PointerBasedLinkedList::clear()
 	delete curr;
 
 	m_head = nullptr;
+
+	m_count = 0;
 }
 PointerBasedLinkedList::~PointerBasedLinkedList()
 {
@@ -151,14 +162,14 @@ ArrayBasedLinkedList::ArrayBasedLinkedList() : ILinkedList()
 	}
 }
 
-bool ArrayBasedLinkedList::isEmpty() const
-{
-	if (m_count == 0) {
-		return true;
-	} else {
-		return false;
-	}
-}
+// bool ArrayBasedLinkedList::isEmpty() const
+// {
+// 	if (m_count == 0) {
+// 		return true;
+// 	} else {
+// 		return false;
+// 	}
+// }
 bool ArrayBasedLinkedList::add(int val)
 {
 	if (m_count < 10) {
