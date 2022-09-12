@@ -18,6 +18,12 @@ int ArrayBasedStack::peek() const
 
 }
 
+bool ArrayBasedStack::push(const int & val) {
+
+}
+
+
+
 std::string ArrayBasedQueue::peekFront() const
 {
 	if (this->isEmpty())
