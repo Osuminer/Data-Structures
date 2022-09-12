@@ -30,6 +30,7 @@ public:
 	int peek() const override;
 	std::string toString() const override;
 private:
+	int tower[4];
 
 };
 
