@@ -65,6 +65,7 @@ public:
 	std::string peekFront() const override;
 	std::string toString() const override;
 private:
+	int queue[4];
 
 };
 

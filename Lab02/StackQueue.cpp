@@ -22,7 +22,11 @@ bool ArrayBasedStack::push(const int & val) {
 
 }
 
-
+ArrayBasedQueue::ArrayBasedQueue(){
+	for( int i = 0; i < 4; i++ ){
+		queue[i] = 0;
+	}
+}
 
 std::string ArrayBasedQueue::peekFront() const
 {
@@ -38,6 +42,30 @@ std::string ArrayBasedQueue::peekFront() const
 
 }
 
-bool ArrayBasedQueue::isEmpty() const{
-	
+std::string ArrayBasedQueue::toString() const{
+
 }
+
+bool ArrayBasedQueue::isEmpty() const{
+	for( int i = 0; i < 4; i++ ){
+		if( queue[i] != 0 )
+			return false;
+	}
+	return true;
+}
+
+bool enQueue(const std::string &val){
+	int disk = (int) val[0];
+	int columnfrom = (int) val[2];
+	int columnto = (int) val[4];
+	for( int i = 0; i < 4; i++ ){
+		if(queue[i] = 0){
+			queue[i];
+		}
+	}
+}
+
+bool deQueue(){
+
+}
+
