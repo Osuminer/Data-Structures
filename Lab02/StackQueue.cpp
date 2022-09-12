@@ -31,3 +31,7 @@ std::string ArrayBasedQueue::peekFront() const
 
 
 }
+
+bool ArrayBasedQueue::isEmpty() const{
+	
+}
