@@ -65,8 +65,8 @@ public:
 	//If the ADT is empty throw an exception indicating this
 	std::string peekFront() const override;
 	std::string toString() const override;
-private:
-	int queue[4];
+protected:
+	std::string queue[7];
 
 };
 
