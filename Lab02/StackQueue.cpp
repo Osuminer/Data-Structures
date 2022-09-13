@@ -36,6 +36,42 @@ bool ArrayBasedStack::isEmpty() const{
 
 bool ArrayBasedStack::push(const int & val) {
 
+	for (int i = 0; i < 4; i++) {
+		if (tower[i] == 0) {
+			tower[i] = val;
+
+			return true;
+		}
+
+		i++;
+	}
+
+	return false;
+}
+
+bool ArrayBasedStack::pop() {
+
+	for (int i = 3; i >= 0; i--) {
+		if (tower[i] != 0) {
+			tower[i] = 0;
+
+			return true;
+		}
+
+		i--;
+	}
+
+	return false;
+}
+
+std::string ArrayBasedStack::toString() const{
+
+}
+
+ArrayBasedStack::~ArrayBasedStack() {
+	for (int i = 0; i < 4; i++) {
+		tower[i] = 0;
+	}
 }
 
 // start of ArrayBasedQueue *************************************************
@@ -91,13 +127,14 @@ bool ArrayBasedQueue::deQueue(){
 
 std::string ArrayBasedQueue::peekFront() const
 {
-	if (this->isEmpty())
-	{
+	if (this->isEmpty()){
 		throw "ADT is emtpy";
-	}
-	else
-	{
-		//TODO
+	} else {
+		for( int i = 0; i < 7; i++ ){                     // searches for first instance of queue and returns string
+			if( queue[i] != "0" ){                        
+				return queue[i];
+			}
+		}
 	}
 
 
