@@ -36,6 +36,42 @@ bool ArrayBasedStack::isEmpty() const{
 
 bool ArrayBasedStack::push(const int & val) {
 
+	for (int i = 0; i < 4; i++) {
+		if (tower[i] == 0) {
+			tower[i] = val;
+
+			return true;
+		}
+
+		i++;
+	}
+
+	return false;
+}
+
+bool ArrayBasedStack::pop() {
+
+	for (int i = 3; i >= 0; i--) {
+		if (tower[i] != 0) {
+			tower[i] = 0;
+
+			return true;
+		}
+
+		i--;
+	}
+
+	return false;
+}
+
+std::string ArrayBasedStack::toString() const{
+
+}
+
+ArrayBasedStack::~ArrayBasedStack() {
+	for (int i = 0; i < 4; i++) {
+		tower[i] = 0;
+	}
 }
 
 
@@ -71,9 +107,7 @@ bool enQueue(const std::string &val){
 	int columnfrom = (int) val[2];
 	int columnto = (int) val[4];
 	for( int i = 0; i < 4; i++ ){
-		if(queue[i] = 0){
-			queue[i];
-		}
+
 	}
 }
 
