@@ -12,10 +12,14 @@ int ArrayBasedStack::peek() const
 	}
 	else
 	{
-		//TODO
+		for (int i = 3; i >= 0; i--) {
+			if (stack[i] != 0) {
+				return stack[i];
+			}
+		}
+
+		return -1;
 	}
-
-
 }
 
 ArrayBasedStack::ArrayBasedStack() {
@@ -35,7 +39,6 @@ bool ArrayBasedStack::isEmpty() const{
 }
 
 bool ArrayBasedStack::push(const int & val) {
-
 	for (int i = 0; i < 4; i++) {
 		if (stack[i] == 0) {
 			stack[i] = val;
@@ -50,7 +53,6 @@ bool ArrayBasedStack::push(const int & val) {
 }
 
 bool ArrayBasedStack::pop() {
-
 	for (int i = 3; i >= 0; i--) {
 		if (stack[i] != 0) {
 			stack[i] = 0;
@@ -94,7 +96,7 @@ bool ArrayBasedQueue::isEmpty() const{
 bool ArrayBasedQueue::enQueue(const std::string &val){
 	std::string hold = this->peekFront();
 	if( this-> isEmpty() ){                               //if queue is empty stores as first value in queue
-		queue[1] = val;
+		queue[0] = val;
 		return true;
 	} else {
 		for( int i = 0; i < 7; i++ ){                     // finds first value in queue, then finds first empty 
@@ -141,5 +143,9 @@ std::string ArrayBasedQueue::peekFront() const
 }
 
 std::string ArrayBasedQueue::toString() const{
+
+}
+
+ArrayBasedQueue::~ArrayBasedQueue() {
 
 }
