@@ -29,7 +29,7 @@ ArrayBasedStack::ArrayBasedStack() {
 }
 
 bool ArrayBasedStack::isEmpty() const{
-	for (int  i = 0; i < 4; i++) {
+	for (int  i = 3; i >= 0; i--) {
 		if (stack[i] != 0) {
 			return false;
 		}
@@ -45,8 +45,6 @@ bool ArrayBasedStack::push(const int & val) {
 
 			return true;
 		}
-
-		i++;
 	}
 
 	return false;
@@ -59,8 +57,6 @@ bool ArrayBasedStack::pop() {
 
 			return true;
 		}
-
-		i--;
 	}
 
 	return false;
