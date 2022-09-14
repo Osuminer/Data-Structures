@@ -67,6 +67,8 @@ public:
 	std::string toString() const override;
 protected:
 	std::string queue[7];
+	int head;
+	int tail;
 
 };
 
