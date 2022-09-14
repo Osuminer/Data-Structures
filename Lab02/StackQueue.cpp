@@ -12,21 +12,25 @@ int ArrayBasedStack::peek() const
 	}
 	else
 	{
-		//TODO
+		for (int i = 3; i >= 0; i--) {
+			if (stack[i] != 0) {
+				return stack[i];
+			}
+		}
+
+		return -1;
 	}
-
-
 }
 
 ArrayBasedStack::ArrayBasedStack() {
 	for (int i = 0; i < 4; i++) {
-		tower[i] = 0;
+		stack[i] = 0;
 	}
 }
 
 bool ArrayBasedStack::isEmpty() const{
-	for (int  i = 0; i < 4; i++) {
-		if (tower[i] != 0) {
+	for (int  i = 3; i >= 0; i--) {
+		if (stack[i] != 0) {
 			return false;
 		}
 	}
@@ -35,30 +39,24 @@ bool ArrayBasedStack::isEmpty() const{
 }
 
 bool ArrayBasedStack::push(const int & val) {
-
 	for (int i = 0; i < 4; i++) {
-		if (tower[i] == 0) {
-			tower[i] = val;
+		if (stack[i] == 0) {
+			stack[i] = val;
 
 			return true;
 		}
-
-		i++;
 	}
 
 	return false;
 }
 
 bool ArrayBasedStack::pop() {
-
 	for (int i = 3; i >= 0; i--) {
-		if (tower[i] != 0) {
-			tower[i] = 0;
+		if (stack[i] != 0) {
+			stack[i] = 0;
 
 			return true;
 		}
-
-		i--;
 	}
 
 	return false;
@@ -70,7 +68,7 @@ std::string ArrayBasedStack::toString() const{
 
 ArrayBasedStack::~ArrayBasedStack() {
 	for (int i = 0; i < 4; i++) {
-		tower[i] = 0;
+		stack[i] = 0;
 	}
 }
 
@@ -130,5 +128,9 @@ std::string ArrayBasedQueue::peekFront() const
 }
 
 std::string ArrayBasedQueue::toString() const{
+
+}
+
+ArrayBasedQueue::~ArrayBasedQueue() {
 
 }
