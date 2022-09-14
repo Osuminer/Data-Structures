@@ -132,5 +132,9 @@ std::string ArrayBasedQueue::toString() const{
 }
 
 ArrayBasedQueue::~ArrayBasedQueue() {
-
+	for (int i = 0; i < 7; i++) {
+		queue[i] = "0";
+	}
+	head = 0;
+	tail = 0;
 }
