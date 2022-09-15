@@ -79,6 +79,8 @@ ArrayBasedQueue::ArrayBasedQueue(){
 	for( int i = 0; i < 7; i++ ){
 		queue[i] = "0";
 	}
+	head = 0;
+	tail = 0;
 }
 
 bool ArrayBasedQueue::isEmpty() const{
@@ -91,35 +93,26 @@ bool ArrayBasedQueue::isEmpty() const{
 
 bool ArrayBasedQueue::enQueue(const std::string &val){
 	std::string hold = this->peekFront();
-	if( this-> isEmpty() ){                               //if queue is empty stores as first value in queue
-		queue[0] = val;
+	if( this-> isEmpty() ){                               
+		queue[head] = val;
+		tail += 1;
 		return true;
 	} else {
-		for( int i = 0; i < 7; i++ ){                     // finds first value in queue, then finds first empty 
-			if( queue[i] == hold ){                       // slot in the array to store the value
-				for(int a = 1; a <= 7-i; a++ ){           // returns true if possible, false if not
-					if( queue[(i+a)] == "0" ){
-						queue[(i+a)] = val;
-						return true;
-					}
-				}
-			}
-		}
+		queue[tail] = val;
+		tail += 1;
+		return true;
 	}
 	return false;
 }
 
 bool ArrayBasedQueue::deQueue(){
 	std::string hold = this->peekFront();
-	if( this-> isEmpty() ){                               // if queue is empty returns false
+	if( this-> isEmpty() ){                               
 		return false;                                     
-	} else {
-		for( int i = 0; i < 7; i++ ){                     // searches for first instance of queue and sets cell
-			if( queue[i] == hold ){                       // to empty, then returns true 
-				queue[i] == "0";
-				return true;
-			}
-		}
+	} else {                                              
+		queue[head] = "0";                                
+		head += 1;
+		return true;
 	}
 }
 
@@ -128,11 +121,7 @@ std::string ArrayBasedQueue::peekFront() const
 	if (this->isEmpty()){
 		throw "ADT is emtpy";
 	} else {
-		for( int i = 0; i < 7; i++ ){                     // searches for first instance of queue and returns string
-			if( queue[i] != "0" ){                        
-				return queue[i];
-			}
-		}
+		return queue[head];
 	}
 
 
@@ -143,5 +132,9 @@ std::string ArrayBasedQueue::toString() const{
 }
 
 ArrayBasedQueue::~ArrayBasedQueue() {
-
+	for (int i = 0; i < 7; i++) {
+		queue[i] = "0";
+	}
+	head = 0;
+	tail = 0;
 }
