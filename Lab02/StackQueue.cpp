@@ -92,12 +92,12 @@ bool ArrayBasedQueue::isEmpty() const{
 }
 
 bool ArrayBasedQueue::enQueue(const std::string &val){
-	std::string hold = this->peekFront();
 	if( this-> isEmpty() ){                               
 		queue[head] = val;
 		tail += 1;
 		return true;
 	} else {
+		std::string hold = this->peekFront();
 		queue[tail] = val;
 		tail += 1;
 		return true;
@@ -106,10 +106,10 @@ bool ArrayBasedQueue::enQueue(const std::string &val){
 }
 
 bool ArrayBasedQueue::deQueue(){
-	std::string hold = this->peekFront();
 	if( this-> isEmpty() ){                               
 		return false;                                     
-	} else {                                              
+	} else {             
+		std::string hold = this->peekFront();                                 
 		queue[head] = "0";                                
 		head += 1;
 		return true;
