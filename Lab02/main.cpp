@@ -25,10 +25,11 @@ public:
 	bool IsGameEnded() { return m_GameEnded; }
 
 	void CheckGameStatus() {
-		if (towers[3].toString() == "4 3 2 1 ") {
+		if (towers[2].toString() == "4 3 2 1 ") {
 			m_GameEnded = true;
 		}
 
+		return;
 	}
 
 	void PrintTowers()
@@ -37,6 +38,7 @@ public:
 		cout << "Tower 1: " << towers[0].toString() << endl;
 		cout << "Tower 2: " << towers[1].toString() << endl;
 		cout << "Tower 3: " << towers[2].toString() << endl << endl;
+		cout << "--------------------------------------" << endl << endl;
 	}
 
 	void MoveDisk(int disk, int towerFrom, int towerTo) {
@@ -46,7 +48,9 @@ public:
 
 		// Error handling for the selected disk not on top of stack
 		if (towers[towerFrom].peek() != disk) {
-			cout << endl << "ERROR: Disk not on top of the stack" << endl;
+			cout << "--------------------------------------" << endl;
+			cout << "ERROR: Disk not on top of the stack" << endl;
+			cout << "--------------------------------------" << endl;
 			return;
 		}
 
@@ -59,7 +63,9 @@ public:
 		
 		// Error handling for bigger disk on top of small disk
 		if (towers[towerTo].peek() < disk) {
-			cout << endl << "ERROR: Disk too small to place on" << endl;
+			cout << "--------------------------------------" << endl;
+			cout << "ERROR: Disk too small to place on" << endl;
+			cout << "--------------------------------------" << endl;
 			return;
 		}
 
@@ -150,7 +156,9 @@ int main()
 	}
 
 	if (game.IsGameEnded() == true) {
-		cout << endl << "Congratulations! You won the game" << endl;
+		cout << "--------------------------------------" << endl;
+		cout << "Congratulations! You won the game" << endl;
+		cout << "--------------------------------------" << endl << endl;
 	}
 
     return 0;
