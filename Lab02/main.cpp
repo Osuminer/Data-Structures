@@ -13,19 +13,66 @@ class TowersOfHannoiGame
 public:
 	TowersOfHannoiGame() : m_GameEnded(false)
 	{
+		for (int i = 0; i < NUM_TOWERS; i++) {
+			towers[i] = ArrayBasedStack();	// Instantiate 3 tower objects
+		}
 
+		for (int i = TOWER_SIZE; i >=1; i--) {
+			towers[0].push(i);				// Add 4 disks in decreasing size to the first tower
+		}
 	}
 
 	bool IsGameEnded() { return m_GameEnded; }
 
+	void CheckGameStatus() {
+		if (towers[3].toString() == "4 3 2 1 ") {
+			m_GameEnded = true;
+		}
+
+	}
+
 	void PrintTowers()
 	{
+		cout << endl;
+		cout << "Tower 1: " << towers[0].toString() << endl;
+		cout << "Tower 2: " << towers[1].toString() << endl;
+		cout << "Tower 3: " << towers[2].toString() << endl << endl;
+	}
 
+	void MoveDisk(int disk, int towerFrom, int towerTo) {
+		// Decrement tower ID's to be aligned with array indices
+		towerFrom--;
+		towerTo--;
+
+		// Error handling for the selected disk not on top of stack
+		if (towers[towerFrom].peek() != disk) {
+			cout << endl << "ERROR: Disk not on top of the stack" << endl;
+			return;
+		}
+
+		// If towerTo is empty no need to peek it
+		if (towers[towerTo].isEmpty()) {
+			towers[towerFrom].pop();
+			towers[towerTo].push(disk);
+			return;
+		}
+		
+		// Error handling for bigger disk on top of small disk
+		if (towers[towerTo].peek() < disk) {
+			cout << endl << "ERROR: Disk too small to place on" << endl;
+			return;
+		}
+
+		// Move the disk
+		towers[towerFrom].pop();
+		towers[towerTo].push(disk);
 	}
 
 private:
 	bool m_GameEnded;
-
+	ArrayBasedStack towers[3];
+	const int TOWER_SIZE = 4;
+	const int NUM_TOWERS = 3;
 };
 
 int main()
@@ -94,13 +141,16 @@ int main()
 
 				cout << "Disk " << diskId << " From " << fromId << " To " << toId << endl;
 
-				
-
+				game.MoveDisk(diskId, fromId, toId);	// Move disk to designated tower
 			}
 		}
 
+		game.CheckGameStatus();
 
+	}
 
+	if (game.IsGameEnded() == true) {
+		cout << endl << "Congratulations! You won the game" << endl;
 	}
 
     return 0;

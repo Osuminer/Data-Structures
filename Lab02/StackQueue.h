@@ -31,7 +31,6 @@ public:
 	std::string toString() const override;
 private:
 	int stack[4];
-
 };
 
 

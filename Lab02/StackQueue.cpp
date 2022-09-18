@@ -63,7 +63,16 @@ bool ArrayBasedStack::pop() {
 }
 
 std::string ArrayBasedStack::toString() const{
+	std::string finalText = "";
 
+	for (int i = 0; i < 4; i++) {
+		if (stack[i] != 0) {
+		finalText.append(std::to_string(stack[i]));
+		finalText.append(" ");
+		}
+	}
+
+	return finalText;
 }
 
 ArrayBasedStack::~ArrayBasedStack() {
