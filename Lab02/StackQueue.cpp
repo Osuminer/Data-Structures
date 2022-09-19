@@ -137,7 +137,13 @@ std::string ArrayBasedQueue::peekFront() const
 }
 
 std::string ArrayBasedQueue::toString() const{
+	std::string finalString = "";
 
+	for(int i = 0; i < 7; i++) {
+		finalString.append(queue[i] + "\n");
+	}
+
+	return finalString;
 }
 
 ArrayBasedQueue::~ArrayBasedQueue() {

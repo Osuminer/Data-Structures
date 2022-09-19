@@ -92,6 +92,7 @@ int main()
 	cout << "<disk>,<column from>,<column to>   NOTE no spaces!!!!" << endl;
 
 	TowersOfHannoiGame game;
+	ArrayBasedQueue gameLog;
 	ofstream logFile;
 
 	// Open file for writing
@@ -107,6 +108,7 @@ int main()
 		getline(cin, inputLine);
 
 		//Write the current move to the log file
+		gameLog.enQueue(inputLine);
 		logFile << inputLine << endl;
 
 		if (inputLine == "-1")
