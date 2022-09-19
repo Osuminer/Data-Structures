@@ -5,35 +5,37 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
 class TowersOfHannoiGame
 {
 public:
-	TowersOfHannoiGame() : m_GameEnded(false)
-	{
+	TowersOfHannoiGame() : m_GameEnded(false) {
+		// Instantiate 3 tower objects
 		for (int i = 0; i < NUM_TOWERS; i++) {
-			towers[i] = ArrayBasedStack();	// Instantiate 3 tower objects
+			towers[i] = ArrayBasedStack();
 		}
 
+		// Add 4 disks in decreasing size to the first tower
 		for (int i = TOWER_SIZE; i >=1; i--) {
-			towers[0].push(i);				// Add 4 disks in decreasing size to the first tower
+			towers[0].push(i);
 		}
 	}
 
 	bool IsGameEnded() { return m_GameEnded; }
 
+	// Check if current game status equals winning conditions
 	void CheckGameStatus() {
-		if (towers[2].toString() == "4 3 2 1 ") {
+		if (towers[2].toString() == "4 3 2 1 ") {	// Check if tower 3 is equal to completed tower conditions
 			m_GameEnded = true;
 		}
 
 		return;
 	}
 
-	void PrintTowers()
-	{
+	void PrintTowers() {
 		cout << endl;
 		cout << "Tower 1: " << towers[0].toString() << endl;
 		cout << "Tower 2: " << towers[1].toString() << endl;
@@ -90,6 +92,10 @@ int main()
 	cout << "<disk>,<column from>,<column to>   NOTE no spaces!!!!" << endl;
 
 	TowersOfHannoiGame game;
+	ofstream logFile;
+
+	// Open file for writing
+	logFile.open("outputs.txt");
 
 	bool receivedEndToken = false;
 
@@ -99,6 +105,10 @@ int main()
 		game.PrintTowers();
 		cout << "Enter Move " << endl;
 		getline(cin, inputLine);
+
+		//Write the current move to the log file
+		logFile << inputLine << endl;
+
 		if (inputLine == "-1")
 		{
 			receivedEndToken = true;
@@ -151,15 +161,19 @@ int main()
 			}
 		}
 
-		game.CheckGameStatus();
+		game.CheckGameStatus();	// Check if game has finished
 
 	}
 
-	if (game.IsGameEnded() == true) {
-		cout << "--------------------------------------" << endl;
+	// Print once game has ended
+	if(game.IsGameEnded()) {
+		game.PrintTowers();
 		cout << "Congratulations! You won the game" << endl;
 		cout << "--------------------------------------" << endl << endl;
 	}
+
+	// Close the log file
+	logFile.close();
 
     return 0;
 }
