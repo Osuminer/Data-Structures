@@ -24,6 +24,7 @@ public:
 	void AddCardToHand(Card& c);
 	Card RemoveCardFromHand();
 	void PrintOutHand();
+	int GetNumCards();
 
     private: 
         std::string m_name;

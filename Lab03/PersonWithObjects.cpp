@@ -18,7 +18,7 @@ PersonWithObjects::PersonWithObjects( const PersonWithObjects &p)
     m_name = p.m_name;
 }
 
-PersonWithObjects::PersonWithObjects(PersonWithObjects && obj)
+PersonWithObjects::PersonWithObjects(PersonWithObjects && obj) noexcept
 {
     std::cout <<"    Calling Person Move Constructor"<<std::endl;
     this->m_name = std::move(obj.m_name);
@@ -59,4 +59,8 @@ void PersonWithObjects::PrintOutHand()
     }
     std::cout << std::endl;
 
+}
+
+int PersonWithObjects::GetNumCards() {
+    return m_stackOfCards.size();
 }
