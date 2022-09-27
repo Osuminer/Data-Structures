@@ -4,7 +4,7 @@
 
 DeckWithObjects::DeckWithObjects()
 {
-    for(int i = 1 ; i <=13; i++)
+    for(int i = 1; i <= 13; i++)
     {
         this->m_deck.push_back(std::move(Card(i,0)));
         this->m_deck.push_back(std::move(Card(i,1)));
@@ -14,7 +14,7 @@ DeckWithObjects::DeckWithObjects()
 }
 DeckWithObjects::~DeckWithObjects()
 {
-    std::cout << "Deleting DeckWithObjects"  << std::endl;
+    // std::cout << "Deleting DeckWithObjects"  << std::endl;
     m_deck.clear();
 }
 

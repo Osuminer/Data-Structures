@@ -14,7 +14,7 @@ GameWithObjects::GameWithObjects(): m_p1("Huey 1"), m_p2("Louie 2"), m_p3("Dewey
 
 GameWithObjects::~GameWithObjects()
 {
-    std::cout<<"GameWithObjects Destructor Called"<<std::endl;	
+    // std::cout<<"GameWithObjects Destructor Called"<<std::endl;	
 }
 
 void GameWithObjects::CheatingAdd(Card c)
@@ -27,8 +27,8 @@ void GameWithObjects::RunCheatGame()
     Card card1Object = Card(11,1);
 
     CheatingAdd(card1Object);
-    std::cout<<"End Calling AddCardToHandObject"<<std::endl;
-    std::cout<<std::endl<<std::endl;
+    // std::cout<<"End Calling AddCardToHandObject"<<std::endl;
+    // std::cout<<std::endl<<std::endl;
 }
 
 bool GameWithObjects::isGameComplete() {
@@ -41,47 +41,34 @@ bool GameWithObjects::isGameComplete() {
 
 void GameWithObjects::RunGame()
 {
-//TODO: draw 5 cards from top of deck to each player
+    int input;  // Stores user input
+    bool turnComplete = false;  // Token that stores if a turn is complete
 
-    int input;
-    bool turnComplete = false;
+    // Draw 5 cards initially for player 1
+    for (int i = 0; i < 5; i++) {
+        m_p1.AddCardToHand(std::move(m_deck.DrawCard()));
+    }
 
+    // Draw 5 cards initially for player 2
+    for (int i = 0; i < 5; i++) {
+        m_p2.AddCardToHand(std::move(m_deck.DrawCard()));
+    }
+
+    // Draw 5 cards initially for player 3
+    for (int i = 0; i < 5; i++) {
+        m_p3.AddCardToHand(std::move(m_deck.DrawCard()));
+    }
+
+    // Game loop
     while (isGameComplete() == false) {
-        do {
-            std::cout << std::endl << "Player 1's turn: Choose choice" << std::endl;
-            std::cout << "1: Draw cards from deck" << std::endl;
-            std::cout << "2: Remove all cards and start with 5 next turn" << std::endl << std::endl;
+        // Player 1 turn loop ---------------------------------------------------------
+        GetUserInput(m_p1);
 
-            std::cin >> input;
+        // Player 2 turn loop ---------------------------------------------------------
+        GetUserInput(m_p2);
 
-            switch (input) {
-                case 1:
-                    do {
-                    cout << endl << "Pick the number of cards you want to draw: ";
-                    cin >> input;
-                    } while();
-
-
-                    break;
-                case 2:
-
-                    break;
-                default:
-                    break;
-            }
-
-        } while (!turnComplete);
-
-
-
-
-
-
-
-
-
-
-
+        // Player 3 turn loop ---------------------------------------------------------
+        GetUserInput(m_p3);
 
     }
 
@@ -131,6 +118,65 @@ void GameWithObjects::RunGame()
     // std::cout << "P3 Player::PrintOutHand" << std::endl;
     // m_p3.PrintOutHand();
     // std::cout << "End Player::PrintOutHand" << std::endl;
-
 }
 
+int GameWithObjects::GetUserInput(PersonWithObjects &player) {
+    int input;
+    bool turnComplete = false;
+
+    // If player discraded cards last turn, draw 5 new ones
+    if (player.GetNumCards() == 0) {
+        for (int i = 0; i < 5; i++) {
+            player.AddCardToHand(std::move(m_deck.DrawCard()));
+        }
+    }
+
+    do {
+        cout << "\n" << player.GetName() << "'s turn: Choose choice" << endl;
+        player.PrintOutHand();
+        cout << "1: Draw cards from deck" << endl;
+        cout << "2: Remove all cards and start with 5 next turn\n" << endl;
+
+        cin >> input;
+        
+        // Validate user choice
+        if (input == 1 || input == 2) {
+            turnComplete = true;
+        }
+    } while (!turnComplete);
+
+    DrawCardFromDeck(player, input);
+    cout << "============================================================" << endl;
+
+    return input;
+}
+
+void GameWithObjects::DrawCardFromDeck(PersonWithObjects &player, int input) {
+    int numCards = player.GetNumCards();
+
+    switch (input) {
+        case 1:
+            // Check for valid input
+            do {
+                cout << endl << "Pick the number of cards you want to draw: ";
+                cin >> input;
+                cout << endl;
+            } while(input > 6 - numCards);
+
+            // Move number of cards from top of deck to players hand
+            for (int i = 0; i < input; i++) {
+                player.AddCardToHand(std::move(m_deck.DrawCard()));
+            }
+
+            break;
+        case 2:
+            // Remove all cards from hand
+            for (int i = 0; i < numCards; i++) {
+                m_deck.ReturnCard(std::move(player.RemoveCardFromHand()));
+            }
+
+            break;
+        default:
+            break;
+    }
+}

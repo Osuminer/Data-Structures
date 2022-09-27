@@ -20,7 +20,7 @@ PersonWithObjects::PersonWithObjects( const PersonWithObjects &p)
 
 PersonWithObjects::PersonWithObjects(PersonWithObjects && obj) noexcept
 {
-    std::cout <<"    Calling Person Move Constructor"<<std::endl;
+    // std::cout <<"    Calling Person Move Constructor"<<std::endl;
     this->m_name = std::move(obj.m_name);
     this->m_listOfCards = std::move(obj.m_listOfCards);
     this->m_stackOfCards = std::move(obj.m_stackOfCards);
@@ -34,13 +34,13 @@ std::string PersonWithObjects::GetName() const
 
 void PersonWithObjects::AddCardToHand( Card  c)
 {
-    std::cout<<"   AddCardToHandObject :"<<c.GetValue()<<" "<<c.GetSuit() << " " << c.GetGuid() << std::endl;
+    // std::cout<<"   AddCardToHandObject :"<<c.GetValue()<<" "<<c.GetSuit() << " " << c.GetGuid() << std::endl;
     m_listOfCards.push_front(std::move(c));
 }
 
 void PersonWithObjects::AddCardToHand(Card & c)
 {
-    std::cout << "   AddCardToHandObject (by ref) :" << c.GetValue() << " " << c.GetSuit() << " " << c.GetGuid() << std::endl;
+    // std::cout << "   AddCardToHandObject (by ref) :" << c.GetValue() << " " << c.GetSuit() << " " << c.GetGuid() << std::endl;
     m_listOfCards.push_front(std::move(c));
 }
 
@@ -62,5 +62,5 @@ void PersonWithObjects::PrintOutHand()
 }
 
 int PersonWithObjects::GetNumCards() {
-    return m_stackOfCards.size();
+    return m_listOfCards.size();
 }

@@ -13,7 +13,7 @@ public:
 
 	PersonWithObjects(const PersonWithObjects &p);
 
-	PersonWithObjects(PersonWithObjects && obj);
+	PersonWithObjects(PersonWithObjects && obj) noexcept;
 
 
 	std::string GetName() const;

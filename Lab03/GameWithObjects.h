@@ -16,6 +16,9 @@ class GameWithObjects
 		void RunCheatGame();
 		void CheatingAdd(Card c);
 		bool isGameComplete();
+		void DrawCardFromDeck(PersonWithObjects &player, int input);
+		int GetUserInput(PersonWithObjects &player);
+
     private:
 
 		void PrintOutQueueOfPeople();
