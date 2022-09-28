@@ -19,6 +19,7 @@ class Card
 		Card(Card && obj) noexcept; // Move constructor
 		Card& operator=(Card&& obj) noexcept; // Move assignment operator
 
+		bool operator == (const Card& c) const { return m_guid == c.m_guid;}
 
 	private:
 		int m_value;

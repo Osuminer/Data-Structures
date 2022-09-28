@@ -15,9 +15,13 @@ class GameWithObjects
 		void RunGame();
 		void RunCheatGame();
 		void CheatingAdd(Card c);
+
 		bool isGameComplete();
-		void DrawCardFromDeck(PersonWithObjects &player, int input);
-		int GetUserInput(PersonWithObjects &player);
+
+		void DrawCardFromDeck(PersonWithObjects &player);
+		void RemoveCardFromHand(PersonWithObjects &player);
+		void PlaceCardInStack(PersonWithObjects &player);
+		int PlayerTurn(PersonWithObjects &player);
 
     private:
 

@@ -18,12 +18,18 @@ public:
 
 	std::string GetName() const;
 
+	bool playerDiscardedCards = false;
+
 	virtual ~PersonWithObjects();
 
 	void AddCardToHand(Card  c);
 	void AddCardToHand(Card& c);
 	Card RemoveCardFromHand();
+	Card RemoveCardFromHand(int num);
 	void PrintOutHand();
+
+	void AddCardToStack(Card c);
+	void PrintOutStack();
 	int GetNumCards();
 
     private: 
