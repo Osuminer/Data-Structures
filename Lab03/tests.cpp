@@ -1,12 +1,12 @@
 // tests.cpp
 
-#include <GameWithObjects.h>
-#include <GameWithSmartPointers.h>
-#include <PersonWithObjects.h>
-#include <PersonWithSmartPointers.h>
-#include <DeckWithObjects.h>
-#include <DeckWithSmartPointers.h>
-#include <Card.h>
+#include "GameWithObjects.h"
+#include "GameWithSmartPointers.h"
+#include "PersonWithObjects.h"
+#include "PersonWithSmartPointers.h"
+#include "DeckWithObjects.h"
+#include "DeckWithSmartPointers.h"
+#include "Card.h"
 #include <gtest/gtest.h>
 
 
