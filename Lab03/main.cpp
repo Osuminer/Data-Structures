@@ -54,9 +54,9 @@ int main()
 {
 	std::cout << "Start" << std::endl;
 	//CallGameWithCheating();
-	CallGameWithObjects();
+	// CallGameWithObjects();
 	//CallGameWithPointers();
-	//CallGameWithSmartPointers();
+	CallGameWithSmartPointers();
 	
 	std::cout << "End" << std::endl;
     return 0;

@@ -17,7 +17,7 @@ DeckWithSmartPointers::DeckWithSmartPointers()
 }
 DeckWithSmartPointers::~DeckWithSmartPointers()
 {
-    std::cout<<"DeckWithSmartPointers Destructor Called"<<std::endl;	
+    // std::cout<<"DeckWithSmartPointers Destructor Called"<<std::endl;	
     m_deck.clear();
 }
 

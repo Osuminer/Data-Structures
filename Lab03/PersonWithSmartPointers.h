@@ -16,6 +16,7 @@ public:
 
 	PersonWithSmartPointers(PersonWithSmartPointers && obj) = delete;
 
+	bool playerDiscardedCards = false;
 
 	std::string GetName() const;
 
@@ -23,7 +24,12 @@ public:
 
 	void AddCardToHand(std::shared_ptr<Card> c);
 	std::shared_ptr<Card> RemoveCardFromHand();
+	std::shared_ptr<Card> RemoveCardFromHand(int num);
 	void PrintOutHand();
+
+	void AddCardToStack(std::shared_ptr<Card> c);
+	void PrintOutStack();
+	int GetNumCards();
 
     private: 
         std::string m_name;

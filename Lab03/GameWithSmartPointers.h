@@ -15,6 +15,15 @@ class GameWithSmartPointers
 		virtual ~GameWithSmartPointers();
 
 		void RunGame();
+
+		bool isGameComplete();
+
+		void DrawCardFromDeck(PersonWithSmartPointers &player);
+		void RemoveCardFromHand(PersonWithSmartPointers &player);
+		void PlaceCardInStack(PersonWithSmartPointers &player);
+		int PlayerTurn(PersonWithSmartPointers &player);
+
+
     private:
         std::unique_ptr<PersonWithSmartPointers> m_p1;
         std::unique_ptr<PersonWithSmartPointers> m_p2;
