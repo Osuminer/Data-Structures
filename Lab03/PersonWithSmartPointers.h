@@ -29,7 +29,8 @@ public:
 
 	void AddCardToStack(std::shared_ptr<Card> c);
 	void PrintOutStack();
-	int GetNumCards();
+	int GetNumCardsStack();
+	int GetNumCardsHand();
 
     private: 
         std::string m_name;

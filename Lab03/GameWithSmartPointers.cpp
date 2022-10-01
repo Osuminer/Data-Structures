@@ -24,7 +24,14 @@ GameWithSmartPointers::~GameWithSmartPointers()
 }
 
 bool GameWithSmartPointers::isGameComplete() {
-    if (m_p1->GetNumCards() == 13 || m_p2->GetNumCards() == 13 || m_p3->GetNumCards() == 13) {
+    if (m_p1->GetNumCardsStack() >= 13) {
+        cout << "\n" + m_p1->GetName() + " wins!" << endl;
+        return true;
+    } else if (m_p2->GetNumCardsStack() >=  13) {
+        cout << "\n" + m_p2->GetName() + " wins!" << endl;
+        return true;
+    } else if (m_p3->GetNumCardsStack() >=  13) {
+        cout << "\n" + m_p3->GetName() + " wins!" << endl;
         return true;
     } else {
         return false;
@@ -33,10 +40,9 @@ bool GameWithSmartPointers::isGameComplete() {
 
 void GameWithSmartPointers::RunGame() {
     int input;  // Stores user input
-    bool turnComplete = false;  // Token that stores if a turn is complete
 
     // Game loop
-    while (isGameComplete() == false) {
+    while (!isGameComplete()) {
         // Player 1 turn loop ---------------------------------------------------------
         PlayerTurn(*m_p1);
 
@@ -68,9 +74,9 @@ int GameWithSmartPointers::PlayerTurn(PersonWithSmartPointers &player) {
     }
 
     do {
-        cout << "\n" << player.GetName() << "'s turn: Choose choice" << endl;
+        cout << "\n" << player.GetName() << "'s turn: Choose choice\n" << endl;
         player.PrintOutHand();
-        cout << "1: Draw cards from deck" << endl;
+        cout << "\n1: Draw cards from deck" << endl;
         cout << "2: Remove all cards and start with 5 next turn" << endl;
         cout << "3: Place card in stack\n" << endl;
 
@@ -98,7 +104,7 @@ int GameWithSmartPointers::PlayerTurn(PersonWithSmartPointers &player) {
             turnComplete = true;
         }
 
-    } while (!turnComplete);
+    } while ((!turnComplete) && (!isGameComplete()));
 
     
     cout << "============================================================" << endl;
@@ -107,7 +113,7 @@ int GameWithSmartPointers::PlayerTurn(PersonWithSmartPointers &player) {
 }
 
 void GameWithSmartPointers::DrawCardFromDeck(PersonWithSmartPointers &player) {
-    int numCards = player.GetNumCards();
+    int numCards = player.GetNumCardsHand();
     int input;
 
     // Check for valid input
@@ -124,7 +130,7 @@ void GameWithSmartPointers::DrawCardFromDeck(PersonWithSmartPointers &player) {
 }
 
 void GameWithSmartPointers::RemoveCardFromHand(PersonWithSmartPointers &player) {
-    int numCards = player.GetNumCards();
+    int numCards = player.GetNumCardsStack();
 
     // Remove all cards from hand
     for (int i = 0; i < numCards; i++) {

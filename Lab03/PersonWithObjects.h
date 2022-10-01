@@ -30,7 +30,8 @@ public:
 
 	void AddCardToStack(Card c);
 	void PrintOutStack();
-	int GetNumCards();
+	int GetNumCardsHand();
+	int GetNumCardsStack();
 
     private: 
         std::string m_name;

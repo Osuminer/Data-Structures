@@ -61,7 +61,7 @@
 
 		TEST(PersonWithObjectsTests, GetNumCards1){
 			PersonWithObjects person;
-			ASSERT_TRUE(person.GetNumCards());
+			ASSERT_TRUE(person.GetNumCardsHand());
 		}
 
 		//************Game With Smart Pointers************//
@@ -114,7 +114,7 @@
 
 		TEST(PersonWithSmartPointersTests, GetNumCards1){
 			PersonWithSmartPointers person;
-			ASSERT_TRUE(person.GetNumCards());
+			ASSERT_TRUE(person.GetNumCardsStack());
 		}
 
  

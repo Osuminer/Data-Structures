@@ -82,6 +82,10 @@ void PersonWithObjects::AddCardToStack(Card  c) {
     m_stackOfCards.push_front(std::move(c));
 }
 
-int PersonWithObjects::GetNumCards() {
+int PersonWithObjects::GetNumCardsStack() {
+    return m_stackOfCards.size();
+}
+
+int PersonWithObjects::GetNumCardsHand() {
     return m_listOfCards.size();
 }

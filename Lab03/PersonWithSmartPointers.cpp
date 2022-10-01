@@ -23,7 +23,7 @@ PersonWithSmartPointers::~PersonWithSmartPointers()
 
 void PersonWithSmartPointers::AddCardToHand(std::shared_ptr<Card> c)  
 {
-    std::cout<<c->GetValue()<<" "<<c->GetSuit()<<" "<<c->GetGuid()<<std::endl;
+    // std::cout<<c->GetValue()<<" "<<c->GetSuit()<<" "<<c->GetGuid()<<std::endl;
     m_listOfCards.push_front(c);
 }
 
@@ -66,6 +66,10 @@ void PersonWithSmartPointers::AddCardToStack(std::shared_ptr<Card> c) {
     m_stackOfCards.push_front(std::move(c));
 }
 
-int PersonWithSmartPointers::GetNumCards() {
+int PersonWithSmartPointers::GetNumCardsStack() {
     return m_stackOfCards.size();
+}
+
+int PersonWithSmartPointers::GetNumCardsHand() {
+    return m_listOfCards.size();
 }

@@ -32,7 +32,14 @@ void GameWithObjects::RunCheatGame()
 }
 
 bool GameWithObjects::isGameComplete() {
-    if (m_p1.GetNumCards() == 13 || m_p2.GetNumCards() == 13 || m_p3.GetNumCards() == 13) {
+    if (m_p1.GetNumCardsStack() >= 13) {
+        cout << "\n" + m_p1.GetName() + " wins!" << endl;
+        return true;
+    } else if (m_p2.GetNumCardsStack() >=  13) {
+        cout << "\n" + m_p2.GetName() + " wins!" << endl;
+        return true;
+    } else if (m_p3.GetNumCardsStack() >=  13) {
+        cout << "\n" + m_p3.GetName() + " wins!" << endl;
         return true;
     } else {
         return false;
@@ -42,7 +49,6 @@ bool GameWithObjects::isGameComplete() {
 void GameWithObjects::RunGame()
 {
     int input;  // Stores user input
-    bool turnComplete = false;  // Token that stores if a turn is complete
 
     // Game loop
     while (isGameComplete() == false) {
@@ -107,7 +113,6 @@ int GameWithObjects::PlayerTurn(PersonWithObjects &player) {
         }
 
     } while (!turnComplete);
-
     
     cout << "============================================================" << endl;
 
@@ -115,7 +120,7 @@ int GameWithObjects::PlayerTurn(PersonWithObjects &player) {
 }
 
 void GameWithObjects::DrawCardFromDeck(PersonWithObjects &player) {
-    int numCards = player.GetNumCards();
+    int numCards = player.GetNumCardsHand();
     int input;
 
     // Check for valid input
@@ -132,7 +137,7 @@ void GameWithObjects::DrawCardFromDeck(PersonWithObjects &player) {
 }
 
 void GameWithObjects::RemoveCardFromHand(PersonWithObjects &player) {
-    int numCards = player.GetNumCards();
+    int numCards = player.GetNumCardsHand();
 
     // Remove all cards from hand
     for (int i = 0; i < numCards; i++) {
