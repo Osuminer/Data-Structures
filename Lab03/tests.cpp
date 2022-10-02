@@ -19,48 +19,50 @@
 
 		TEST(GameWithObjectsTests,RunGame1){
 			GameWithObjects game;
-			ASSERT_TRUE(game.RunGame());
+			game.RunGame();
+			ASSERT_TRUE(game.isGameComplete());
+
 		}
 
 		TEST(GameWithObjectsTests, PlayerTurn1){
 			GameWithObjects game;
-			PersonWithObjects player;
+			PersonWithObjects player("Player1");
 			ASSERT_TRUE(game.PlayerTurn(player));
 		}
 
 		//Deck With Objects********************************************
 
 		TEST(DeckWithObjectsTests, DrawCard1){
-			DeckwithObjects deck;
+			DeckWithObjects deck;
 			ASSERT_TRUE(deck.DrawCard());
 		}
 
 		TEST(DeckWithObjectsTests, ReturmCard1){
-			DeckwithObjects deck;
-			Card card;
-			ASSERT_TRUE(deck.ReturnCard(card));
+			DeckWithObjects deck;
+			Card card(1,1);
+			ASSERT_ANY_THROW(deck.ReturnCard(card));
+			
 		}
 
 		TEST(DeckWithObjectsTests, PrintDeck1){
-			DeckwithObjects deck;
-			ASSERT_TRUE(deck.PrintDeck());
+			DeckWithObjects deck;
+			ASSERT_ANY_THROW(deck.PrintDeck());
 		}
 
 		//Person With Objects*******************************************
 
 		TEST(PersonWithObjectsTests, GetName1){
-			PersonWithObjects person;
-			ASSERT_TRUE(person.GetName());
-		}
-
-		TEST(PersonWithObjectsTests, AddCardToHand1){
-			PersonWithObjects person;
-			Card card;
-			ASSERT_TRUE(person.AddCardToHand(card));
+			PersonWithObjects person("player1");
+			ASSERT_EQ(person.GetName() , "player1");
 		}
 
 		TEST(PersonWithObjectsTests, GetNumCards1){
-			PersonWithObjects person;
+			PersonWithObjects person("player1");
+			ASSERT_EQ(person.GetNumCardsHand(), 0);
+		}
+
+		TEST(PersonWithObjectsTests, GetNumCards2){
+			PersonWithObjects person("player1");
 			ASSERT_TRUE(person.GetNumCardsHand());
 		}
 
@@ -73,47 +75,47 @@
 
 		TEST(GameWithSmartPointersTests,RunGame1){
 			GameWithSmartPointers game;
-			ASSERT_TRUE(game.RunGame());
+			ASSERT_ANY_THROW(game.RunGame());
 		}
 
 		TEST(GameWithSmartPointersTests, PlayerTurn1){
 			GameWithSmartPointers game;
-			PersonWithSmartPointers player;
+			PersonWithSmartPointers player("player1");
 			ASSERT_TRUE(game.PlayerTurn(player));
 		}
 		
 		//Deck With Smart Pointers*************************************
 
 		TEST(DeckWithSmartPointersTests, DrawCard1){
-			DeckwithSmartPointers deck;
+			DeckWithSmartPointers deck;
 			ASSERT_TRUE(deck.DrawCard());
 		}
 
 		TEST(DeckWithSmartPointersTests, ReturmCard1){
-			DeckwithSmartPointers deck;
-			ASSERT_TRUE(deck.ReturnCard(deck.DrawCard()));
+			DeckWithSmartPointers deck;
+			ASSERT_ANY_THROW(deck.ReturnCard(deck.DrawCard()));
 		}
 
 		TEST(DeckWithSmartPointerstests, PrintDeck1){
-			DeckwithSmartPointers deck;
-			ASSERT_TRUE(deck.PrintDeck());
+			DeckWithSmartPointers deck;
+			ASSERT_ANY_THROW(deck.PrintDeck());
 		}
 
 		//Person With Smart Pointers***********************************
 
 		TEST(PersonWithSmartPointersTests, GetName1){
-			PersonWithSmartPointers person;
-			ASSERT_TRUE(person.GetName());
+			PersonWithSmartPointers person("player1");
+			ASSERT_EQ(person.GetName() , "player1");
 		}
 
 		TEST(PersonWithSmartPointersTests, AddCardToHand1){
-			PersonWithSmartPointers person;
-			Card card;
-			ASSERT_TRUE(person.AddCardToHand(card));
+			PersonWithSmartPointers person("player1");
+			std::shared_ptr<Card> c;
+			ASSERT_ANY_THROW(person.AddCardToHand(c));
 		}
 
 		TEST(PersonWithSmartPointersTests, GetNumCards1){
-			PersonWithSmartPointers person;
+			PersonWithSmartPointers person("player1");
 			ASSERT_TRUE(person.GetNumCardsStack());
 		}
 
