@@ -39,11 +39,11 @@ TEST(sort, quickSort) {
     ASSERT_EQ(arrayToString(arr, n), "1 2 3 4 5 6 7 8 9 10 ");
 }
 
-TEST(sort, radixsort) {
+TEST(sort, radixSort) {
     int arr[10] = {5, 3, 2, 6, 9, 8, 1, 4, 7, 10};
     int n = 10;
 
-    radixsort(arr, n);
+    radixSort(arr, n);
 
     ASSERT_EQ(arrayToString(arr, n), "1 2 3 4 5 6 7 8 9 10 ");
 }
