@@ -34,7 +34,7 @@
 
 		TEST(DeckWithObjectsTests, DrawCard1){
 			DeckWithObjects deck;
-			ASSERT_TRUE(deck.DrawCard());
+			ASSERT_ANY_THROW(deck.DrawCard());
 		}
 
 		TEST(DeckWithObjectsTests, ReturmCard1){
@@ -88,7 +88,7 @@
 
 		TEST(DeckWithSmartPointersTests, DrawCard1){
 			DeckWithSmartPointers deck;
-			ASSERT_TRUE(deck.DrawCard());
+			ASSERT_ANY_THROW(deck.DrawCard());
 		}
 
 		TEST(DeckWithSmartPointersTests, ReturmCard1){
