@@ -1,8 +1,9 @@
+project(Lab04)
 cmake_minimum_required(VERSION 3.1)
 
 find_package(GTest REQUIRED)
  
-# add_library(applibrary)
+add_library(applibrary main.cpp)
 
 # runTests
 add_executable(runTests tests.cpp)

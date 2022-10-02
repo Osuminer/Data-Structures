@@ -211,3 +211,13 @@ void radixsort(int arr[], int n)
     for (int exp = 1; m / exp > 0; exp *= 10)
         countSort(arr, n, exp);
 }
+
+string arrayToString(int arr[], int n) {
+    string s = "";
+
+    for (int i = 0; i < n; i++) {
+        s.append(to_string(arr[i]) + " ");
+    }
+
+    return s;
+}
