@@ -18,11 +18,11 @@ int main() {
     }
 
     auto t1 = Clock::now();
-    // bubbleSort(arr, ARRAYSIZE);
+    bubbleSort(arr, ARRAYSIZE);
     // insertionSort(arr, ARRAYSIZE);
     // mergeSort(arr, 0, ARRAYSIZE-1);
     // quickSort(arr, 0, ARRAYSIZE-1);
-    radixSort(arr, ARRAYSIZE);
+    // radixSort(arr, ARRAYSIZE);
     auto t2 = Clock::now();
 
     cout << "\nTime taken: " << chrono::duration_cast<chrono::nanoseconds>(t2 - t1).count() << "ns\n" << endl;
