@@ -26,9 +26,21 @@ int FactorialByRecursion::CalculateFactorial(int num) {
 int FactorialByStack::CalculateFactorial(int num) {
 
 	int answer = 1;
+	int cheese = num;
 
+	std::stack<int> asia;
+	
+	asia.push(num + 1);
 
-	// TODO
+	while( cheese > 0 ){
+		asia.push(cheese);
+		cheese--;
+	}
+
+	while( asia.top() <= num ){
+		answer *= asia.top();
+		asia.pop();
+	}
 
 	return answer;
 }
