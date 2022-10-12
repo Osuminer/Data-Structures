@@ -1,9 +1,9 @@
 #include "Recursion.h"
 #include <stack>
 #include <stdbool.h>
-#include<iostream>
-#include<sstream>
-#include<string>
+#include <iostream>
+#include <sstream>
+#include <string>
 
 using namespace std;
 
@@ -11,21 +11,22 @@ using namespace std;
 // 4! = 4 * 3 * 2 * 1
 
 
-int FactorialByRecursion::CalculateFactorial(int num) 
-{
+int FactorialByRecursion::CalculateFactorial(int num) {
+	int answer = num;
+	if(num == 1) {
+		return 1;
+	}
 
-	int answer = 1;
-
-	// TODO
+	int temp = CalculateFactorial(num-1);
 	
-	return answer;
-
+	return answer * temp;
 }
 
 
 int FactorialByStack::CalculateFactorial(int num) {
 
 	int answer = 1;
+
 
 	// TODO
 
