@@ -2,18 +2,16 @@
 
 using namespace std;
 
-// https://www.geeksforgeeks.org/bubble-sort/
+// Bubble Sort -------------------------------------------------------------
 void bubbleSort(int arr[], int n) {
-    int i, j;
-    for (i = 0; i < n - 1; i++)
- 
-        // Last i elements are already
-        // in place
-        for (j = 0; j < n - i - 1; j++)
-            if (arr[j] > arr[j + 1])
-                swap(arr[j], arr[j + 1]);
+    for (int i = 0; i < n-1; i++)
+        for (int j = 0; j < n-i-1; j++)
+            if (arr[j] > arr[j+1]) {
+                swap(arr[j], arr[j+1]);
+            }
 }
 
+// Insertion Sort -------------------------------------------------------------
 // https://www.geeksforgeeks.org/insertion-sort/
 void insertionSort(int arr[], int n) { 
     int i, key, j; 
@@ -35,6 +33,7 @@ void insertionSort(int arr[], int n) {
     } 
 }
 
+// Merge Sort -------------------------------------------------------------
 // https://www.geeksforgeeks.org/merge-sort/
 void merge(int array[], int const left, int const mid,
            int const right)
@@ -94,7 +93,7 @@ void merge(int array[], int const left, int const mid,
     delete[] leftArray;
     delete[] rightArray;
 }
- 
+
 // begin is for left index and end is
 // right index of the sub-array
 // of arr to be sorted
@@ -116,6 +115,7 @@ void swap(int* a, int* b)
     *b = t;
 }
 
+// Quick Sort -------------------------------------------------------------
 /* This function takes last element as pivot, places
 the pivot element at its correct position in sorted
 array, and places all smaller (smaller than pivot)
@@ -158,6 +158,8 @@ void quickSort(int arr[], int low, int high)
         quickSort(arr, pi + 1, high);
     }
 }
+
+// Radix Sort -------------------------------------------------------------
 
 // A utility function to get maximum value in arr[]
 int getMax(int arr[], int n)
