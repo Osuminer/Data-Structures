@@ -3,7 +3,8 @@
 #include <stdbool.h>
 #include <iostream>
 #include <sstream>
-#include <string>
+#include <exception>
+
 
 using namespace std;
 
@@ -121,15 +122,15 @@ extern std::string CallSimpleExceptionMethod(int i) {
     // The tests will tell you what to string to return.
 
 
-	std::string retVal;
+	std::string retVal = "I did not get an Exception";
 	MyFakeClass* resourceThatNeedsToBeCleanedup = new MyFakeClass();
 
 	//added this - Jason
 	try{ 
 		SimpleExceptionMethod(i); 
 	}
-	catch(exception MyException1()){ 
-		retVal = "I got Exception 1";
+	catch(exception e){ 
+		return e.what();
 	}
 
 	delete resourceThatNeedsToBeCleanedup;
@@ -166,12 +167,12 @@ char const* MyBaseException::what() const throw() {
 	return "MyBaseException";
 }
 char const* MyException1::what() const throw() {
-	return "MyException1";
+	return "I got Exception 1";
 }
 char const* MyException2::what() const throw() {
-	return "MyException2";
+	return "I got Exception 2";
 }
 //added this - Jason
 char const* MyException3::what() const throw() {
-	return "MyException3";
+	return "I got Exception 3";
 }

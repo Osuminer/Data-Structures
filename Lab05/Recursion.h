@@ -1,5 +1,5 @@
 #include <vector>
-
+#include <exception>
 #include <stack>
 #include <string>
 #include <iostream>
