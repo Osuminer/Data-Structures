@@ -62,7 +62,13 @@ public:
 	virtual char const* what() const throw();
 };
 
-// TODO make a MyException3
+//already made MyException3 - Jason
+class MyException3 : MyBaseException
+{
+public:
+
+	virtual char const* what() const throw();
+};
 
 
 extern  std::string CallSimpleExceptionMethod(int i);
