@@ -14,7 +14,7 @@ using namespace std;
 
 int FactorialByRecursion::CalculateFactorial(int num) {
 	int answer = num;
-	if(num == 1) {
+	if (num == 1) {
 		return 1;
 	}
 
@@ -52,7 +52,6 @@ bool ChessBoard::Solve(ChessBoard chessBoard, int col) {
 		return true;
 	}
 
-
 	for (int i = 0; i < 8; ++i) {
 		if (CheckSafeQueens(chessBoard, i, col)) {
 			m_board[i][col] = 1;
@@ -61,11 +60,39 @@ bool ChessBoard::Solve(ChessBoard chessBoard, int col) {
 				return true;
 			}
 
-
 			m_board[i][col] = 0;
 		}
 	}
 	return false;
+}
+
+bool ChessBoard::SolveStack(ChessBoard chessBoard, int col) {
+
+	int temp;
+	stack<int> s;
+
+	for (temp = 7; temp >= 0; temp--) {
+		s.push(temp);
+	}
+
+	while (s.top() < 8) {
+		int top = s.top();
+		int row = 0;
+
+		while (!CheckSafeQueens(chessBoard, row, top) && row < 8) {
+			m_board[row][top] = 0;
+			row++;
+		}
+
+		if (row >= 8) {
+			return false;
+		}
+
+		m_board[row][top] = 1;
+		s.pop();
+	}
+	
+	return true;
 }
 
 
