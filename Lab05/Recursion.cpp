@@ -53,7 +53,6 @@ bool ChessBoard::Solve(ChessBoard chessBoard, int col) {
 
 
 	for (int i = 0; i < 8; ++i) {
-
 		if (CheckSafeQueens(chessBoard, i, col)) {
 			m_board[i][col] = 1;
 
@@ -61,8 +60,8 @@ bool ChessBoard::Solve(ChessBoard chessBoard, int col) {
 				return true;
 			}
 
-			m_board[i][col] = 0;
 
+			m_board[i][col] = 0;
 		}
 	}
 	return false;
@@ -70,21 +69,29 @@ bool ChessBoard::Solve(ChessBoard chessBoard, int col) {
 
 
 bool ChessBoard::CheckSafeQueens(ChessBoard chessBoard, int row, int col) {
-	for (int i = 0; i < 8; i++) {
-		for (int j = 0; j < 8; j++) {
-			if (m_board[col][j] == 1) {
-				return false;
-			}
 
-			if (m_board[i][row] == 1) {
-				return false;
-			}
+	// Check all spots left of column
+	for (int i = 0; i < col; i++) {
+        if (m_board[row][i]) {
+            return false;
+		}
+	}
+
+	// Check all spots in upper left diagonal
+	for (int i = row, j = col; i >= 0 && j >= 0; i--, j--) {
+        if (m_board[i][j]) {
+            return false;
+		}
+	}
+
+	// Check all spots in lower left diagonal
+	for (int i = row, j = col; j >= 0 && i < 8; i++, j--) {
+        if (m_board[i][j]) {
+            return false;
 		}
 	}
 
     return true;
-
-    // TODO
 }
 
 

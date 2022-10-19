@@ -17,6 +17,8 @@ int main()
 	else
 	{
 		cout << "No solution found"  << endl;
+		string output = chessBoard.ToString();
+		cout << output << endl;
 	}
 	
 
