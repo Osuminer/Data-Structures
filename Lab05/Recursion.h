@@ -103,7 +103,7 @@ public:
 	std::string ToString();
 	
 	bool Solve(ChessBoard chessboard, int col);
-	bool SolveStack(ChessBoard chessboard, int col);
+	bool SolveStack(ChessBoard chessboard);
 
 	
 

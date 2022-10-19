@@ -66,7 +66,7 @@ bool ChessBoard::Solve(ChessBoard chessBoard, int col) {
 	return false;
 }
 
-bool ChessBoard::SolveStack(ChessBoard chessBoard, int col) {
+bool ChessBoard::SolveStack(ChessBoard chessBoard) {
 
 	int temp;
 	stack<int> s;
@@ -76,11 +76,11 @@ bool ChessBoard::SolveStack(ChessBoard chessBoard, int col) {
 	}
 
 	while (s.top() < 8) {
-		int top = s.top();
+		int col = s.top();
 		int row = 0;
 
-		while (!CheckSafeQueens(chessBoard, row, top) && row < 8) {
-			m_board[row][top] = 0;
+		while (!CheckSafeQueens(chessBoard, row, col) && row < 8) {
+			m_board[row][col] = 0;
 			row++;
 		}
 
@@ -88,7 +88,7 @@ bool ChessBoard::SolveStack(ChessBoard chessBoard, int col) {
 			return false;
 		}
 
-		m_board[row][top] = 1;
+		m_board[row][col] = 1;
 		s.pop();
 	}
 	
@@ -155,8 +155,11 @@ extern std::string CallSimpleExceptionMethod(int i) {
 	//added this - Jason
 	try{ 
 		SimpleExceptionMethod(i); 
-	}
-	catch(exception e){ 
+	} catch(MyException1 e){ 
+		return e.what();
+	} catch(MyException2 e){ 
+		return e.what();
+	} catch(MyException3 e){ 
 		return e.what();
 	}
 
