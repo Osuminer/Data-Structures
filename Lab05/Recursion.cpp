@@ -26,20 +26,20 @@ int FactorialByRecursion::CalculateFactorial(int num) {
 int FactorialByStack::CalculateFactorial(int num) {
 
 	int answer = 1;
-	int cheese = num;
+	int temp = num;
 
-	std::stack<int> asia;
+	std::stack<int> s;
 	
-	asia.push(num + 1);
+	s.push(num + 1);
 
-	while( cheese > 0 ){
-		asia.push(cheese);
-		cheese--;
+	while( temp > 0 ){
+		s.push(temp);
+		temp--;
 	}
 
-	while( asia.top() <= num ){
-		answer *= asia.top();
-		asia.pop();
+	while( s.top() <= num ){
+		answer *= s.top();
+		s.pop();
 	}
 
 	return answer;
@@ -54,12 +54,11 @@ bool ChessBoard::Solve(ChessBoard chessBoard, int col) {
 
 	for (int i = 0; i < 8; ++i) {
 
-		if (CheckSafeQueens(chessBoard, i, col)) 
-		{
+		if (CheckSafeQueens(chessBoard, i, col)) {
 			m_board[i][col] = 1;
 
-			if (Solve(chessBoard, col + 1) == true)
-			{
+
+			if (Solve(chessBoard, col + 1) == true) {
 				return true;
 			}
 
@@ -71,8 +70,7 @@ bool ChessBoard::Solve(ChessBoard chessBoard, int col) {
 }
 
 
-bool ChessBoard::CheckSafeQueens(ChessBoard chessBoard, int row, int col) 
-{
+bool ChessBoard::CheckSafeQueens(ChessBoard chessBoard, int row, int col) {
 
     return false;
 
@@ -96,8 +94,7 @@ string ChessBoard::ToString() {
 	return answer;
 }
 
-extern std::string CallSimpleExceptionMethod(int i)
-{    
+extern std::string CallSimpleExceptionMethod(int i) {    
     // TODO:
     // Note this is starter code that is not safe.  
     // As Simple exceptin method will throw an exception
@@ -120,26 +117,21 @@ extern std::string CallSimpleExceptionMethod(int i)
 }
 
 // NOTE this function should not be editted.
-extern void SimpleExceptionMethod(int i)
-{
+extern void SimpleExceptionMethod(int i) {
 	int retVal = 0;
 
-	if (i == 1)
-	{
+	if (i == 1) {
 		throw MyException1();
 	}
-	else if (i == 2)
-	{
+	else if (i == 2) {
 		throw MyException2();
 
 	}
-	else if (i == 3)
-	{
+	else if (i == 3) {
         // TODO uncomment line below, as you need to have all three exceptions working here
 		//throw MyException3();
 	}
-	else
-	{
+	else {
 		retVal = 20;
 	}
 
