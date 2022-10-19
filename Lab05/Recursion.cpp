@@ -57,7 +57,6 @@ bool ChessBoard::Solve(ChessBoard chessBoard, int col) {
 		if (CheckSafeQueens(chessBoard, i, col)) {
 			m_board[i][col] = 1;
 
-
 			if (Solve(chessBoard, col + 1) == true) {
 				return true;
 			}
@@ -71,8 +70,19 @@ bool ChessBoard::Solve(ChessBoard chessBoard, int col) {
 
 
 bool ChessBoard::CheckSafeQueens(ChessBoard chessBoard, int row, int col) {
+	for (int i = 0; i < 8; i++) {
+		for (int j = 0; j < 8; j++) {
+			if (m_board[col][j] == 1) {
+				return false;
+			}
 
-    return false;
+			if (m_board[i][row] == 1) {
+				return false;
+			}
+		}
+	}
+
+    return true;
 
     // TODO
 }
