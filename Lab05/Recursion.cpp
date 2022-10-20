@@ -67,29 +67,33 @@ bool ChessBoard::Solve(ChessBoard chessBoard, int col) {
 }
 
 bool ChessBoard::SolveStack(ChessBoard chessBoard) {
-	int filled = 0;
-	stack<pair<int, int>> queens;
 
-	queens.push(make_pair(-1, -1));
+	int filled = 0;	// Number of filled spots
+	stack<pair<int, int>> queens;	// Stack of queen locations
+
+	queens.push(make_pair(-1, -1));	// Default starter location
 
 	int col = 0;
 	int row = 0;
 
+	// Loop until 8 spots are filled
 	while (filled < 8) {
+
+		// Increment the last queen's column by 1 for next queen
 		col = queens.top().second + 1;
 
-		if (CheckSafeQueens(chessBoard, row, col)) {
+		if (CheckSafeQueens(chessBoard, row, col)) {	// If queen is safe in that position
 			m_board[row][col] = 1;
 			queens.push(make_pair(row, col));
 			filled++;
 			row = 0;
-		} else if (!CheckSafeQueens(chessBoard, row, col) && row < 8) {
+		} else if (!CheckSafeQueens(chessBoard, row, col) && row < 8) {	// If queen can't be placed, but still in bounds
 			m_board[row][col] = 0;
 			row++;
-		} else if (!CheckSafeQueens(chessBoard, row, col) && row >= 8) {
-			queens.pop();
+		} else if (!CheckSafeQueens(chessBoard, row, col) && row >= 8) {	// If queen can't be placed, but out of bounds
+			queens.pop();	// Get rid of last queen to find new location
 			filled--;
-			row = queens.top().first + 1;
+			row = queens.top().first + 1;	// Start moving last queen again from last row
 		}
 	}
 	
