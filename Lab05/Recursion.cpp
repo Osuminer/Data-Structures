@@ -67,29 +67,30 @@ bool ChessBoard::Solve(ChessBoard chessBoard, int col) {
 }
 
 bool ChessBoard::SolveStack(ChessBoard chessBoard) {
+	int filled = 0;
+	stack<pair<int, int>> queens;
 
-	int temp;
-	stack<int> s;
+	queens.push(make_pair(-1, -1));
 
-	for (temp = 7; temp >= 0; temp--) {
-		s.push(temp);
-	}
+	int col = 0;
+	int row = 0;
 
-	while (s.top() < 8) {
-		int col = s.top();
-		int row = 0;
+	while (filled < 8) {
+		col = queens.top().second + 1;
 
-		while (!CheckSafeQueens(chessBoard, row, col) && row < 8) {
+		if (CheckSafeQueens(chessBoard, row, col)) {
+			m_board[row][col] = 1;
+			queens.push(make_pair(row, col));
+			filled++;
+			row = 0;
+		} else if (!CheckSafeQueens(chessBoard, row, col) && row < 8) {
 			m_board[row][col] = 0;
 			row++;
+		} else if (!CheckSafeQueens(chessBoard, row, col) && row >= 8) {
+			queens.pop();
+			filled--;
+			row = queens.top().first + 1;
 		}
-
-		if (row >= 8) {
-			return false;
-		}
-
-		m_board[row][col] = 1;
-		s.pop();
 	}
 	
 	return true;
@@ -102,6 +103,20 @@ bool ChessBoard::CheckSafeQueens(ChessBoard chessBoard, int row, int col) {
 	for (int i = 0; i < col; i++) {
         if (m_board[row][i]) {
             return false;
+		}
+	}
+
+	// Check all spots above
+	for (int i = 0; i < row; i++) {
+		if (m_board[i][col]) {
+			return false;
+		}
+	}
+
+	// Check all spots below
+	for (int i = row; i < 8; i++) {
+		if (m_board[i][col]) {
+			return false;
 		}
 	}
 
