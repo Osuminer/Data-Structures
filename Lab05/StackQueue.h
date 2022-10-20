@@ -1,84 +1,137 @@
 #include <string>
 
+template<typename T> class ArrayBasedStack {
+	public:
+		ArrayBasedStack(void) {
+			top = -1;
+		}
 
+		~ArrayBasedStack() {
+			top = -1;
+		}
 
-template<typename T> class IStack {
-public:
-	///Returns true if empty, otherwise false
-	virtual bool isEmpty() const = 0;
-	/// Adds a value to the Stack.  Returns true if able to add, otherwise false
-	virtual bool push(const T & val) = 0;
-	/// removes a value from the stack.   Feturns true if able to remove an element, otherwise false
-	virtual bool pop() = 0;
-	//If the ADT is empty throw an exception indicating this, otherwise returns top of stack
-	virtual T peek() const = 0;
-	// outputs contents to a string
-	virtual std::string toString() const = 0;
-	
-private:
+		bool isEmpty() const {
+				if (top == -1) {
+					return true;
+				}
 
-};
+			return false;
+		}
 
+		bool push(const T & val) {
+			if (top == 4) {
+				return false;
+			}
 
+			top++;
+			stack[top] = val;
 
-template<typename T> class ArrayBasedStack : IStack {
-public:
-	ArrayBasedStack(void);
-	virtual ~ArrayBasedStack();
-	bool isEmpty() const override;
-	bool push(const T & val) override;
-	bool pop() override;
-	//If the ADT is empty throw an exception indicating this
-	T peek() const override;
-	std::string toString() const override;
-private:
-	T stack[4];
-};
+			return true;
+		}
 
+		bool pop() {
+			if (top <= 0) {
+				return false;
+			}
 
-template<typename T> class IQueue {
-public:
-	///Returns true if empty, otherwise false
-	virtual bool isEmpty() const = 0;
-	// Adds a value to the Q.  Returns true if able otherwise false
-	virtual bool enQueue(const T &val) = 0;
-	// remove a value to the Q.  Returns true if able otherwise false
-	virtual bool deQueue() = 0;
-	//If the ADT is empty throw an exception indicating this, otherwise returns the value of the 
-	// front of the Q
-	virtual T peekFront() const = 0;
+			top--;
 
-	// outputs contents to a string
-	virtual std::string toString() const = 0;
-private:
+			return true;
+		}
 
-};
+		T peek() const {
+			if (this->isEmpty()) {
+				throw "ADT is emtpy";
+			} else {
+				return stack[top];
+			}
+		}
 
+		std::string toString() const {
+			std::string finalText = "";
 
+			for (int i = 0; i < 4; i++) {
+				if (stack[i] != 0) {
+					finalText.append(std::to_string(stack[i]));
+					finalText.append(" ");
+				}
+			}
 
-template<typename T> class  ArrayBasedQueue : IQueue {
-public:
-	ArrayBasedQueue(void);
-	virtual ~ArrayBasedQueue();
-	bool isEmpty() const override;
-	bool enQueue(const T &val) override;
-	bool deQueue() override;
-	//If the ADT is empty throw an exception indicating this
-	T peekFront() const override;
-	std::string toString() const override;
-protected:
-	T queue[7];
-	int head;
-	int tail;
+			return finalText;
+		}
+
+	private:
+		int top;
+		T stack[4];
 
 };
 
 
+template<typename T> class  ArrayBasedQueue {
+	public:
+		ArrayBasedQueue(void) {
+			head = 0;
+			tail = 0;
+		}
 
+		~ArrayBasedQueue() {
+			head = 0;
+			tail = 0;
+		}
 
+		bool isEmpty() const {
+				if(head == tail) {
+					return true;
+				}
+			return false;
+		}
 
+		bool enQueue(const T &val) {
+			if( this-> isEmpty() ){                               
+				queue[head] = val;
+				tail++;
+				return true;
+			} else {
+				T hold = this->peekFront();
+				queue[tail] = val;
+				tail++;
+				return true;
+			}
 
+			return false;
+		}
 
+		bool deQueue() {
+			if(this->isEmpty()){                               
+				return false;                                     
+			} else {                                                                              
+				head++;
+				return true;
+			}
+		}
 
+		T peekFront() const {
+			if (this->isEmpty()){
+				throw "ADT is emtpy";
+			} else {
+				return queue[head];
+			}
+		}
 
+		std::string toString() const {
+			std::string finalString = "";
+
+			for(int i = 0; i < 7; i++) {
+				finalString.append(queue[i] + "\n");
+			}
+
+			return finalString;
+		}
+
+	protected:
+		T queue[7];
+		int head;
+		int tail;
+
+};
 

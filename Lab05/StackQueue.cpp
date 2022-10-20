@@ -18,8 +18,6 @@ T ArrayBasedStack<T>::peek() const
 				return stack[i];
 			}
 		}
-
-		return -1;
 	}
 }
 
@@ -136,15 +134,12 @@ bool ArrayBasedQueue<T>::deQueue(){
 }
 
 template<class T>
-T ArrayBasedQueue<T>::peekFront() const
-{
+T ArrayBasedQueue<T>::peekFront() const {
 	if (this->isEmpty()){
 		throw "ADT is emtpy";
 	} else {
 		return queue[head];
 	}
-
-
 }
 
 template<class T>

@@ -83,46 +83,46 @@
 
 		//ArrayBasedStack tests cases***********************************
 
-		TEST(Stack , arraybasedstackint)
+		TEST(Stack, ArrayBasedStackInt)
 		{
-			ArrayBasedStack<int> cheese;
-			cheese.push(1);
-			ASSERT_EQ( cheese.peek(), 1);
+			ArrayBasedStack<int> s;
+			s.push(1);
+			ASSERT_EQ( s.peek(), 1);
 		}
-		TEST(Stack , arraybasedstackdouble)
+		TEST(Stack, ArrayBasedStackDouble)
 		{
-			ArrayBasedStack<double> cheese;
-			cheese.push(.42);
-			ASSERT_EQ( cheese.peek(), .42);
+			ArrayBasedStack<double> s;
+			s.push(.42);
+			ASSERT_EQ( s.peek(), .42);
 		}
-		TEST(Stack , arraybasedstackstring)
+		TEST(Stack, ArrayBasedStackString)
 		{
-			ArrayBasedStack<std::string> cheese;
-			cheese.push("milk");
-			ASSERT_EQ( cheese.peek(), "milk");
+			ArrayBasedStack<std::string> s;
+			s.push("milk");
+			ASSERT_EQ( s.peek(), "milk");
 		}
 
 
 
 		//ArrayBasedQueue test cases*************************************
 
-		TEST(Queue , arraybasedqueueint)
+		TEST(Queue, ArrayBasedQueueInt)
 		{
-			ArrayBasedQueue<int> cheese;
-			cheese.enQueue(1);
-			ASSERT_EQ( cheese.peekFront(), 1);
+			ArrayBasedQueue<int> q;
+			q.enQueue(1);
+			ASSERT_EQ( q.peekFront(), 1);
 		}
-		TEST(Queue , arraybasedqueuedouble)
+		TEST(Queue, ArrayBasedQueueDouble)
 		{
-			ArrayBasedQueue<double> cheese;
-			cheese.enQueue(.42);
-			ASSERT_EQ( cheese.peekFront(), .42);
+			ArrayBasedQueue<double> q;
+			q.enQueue(.42);
+			ASSERT_EQ( q.peekFront(), .42);
 		}
-		TEST(Queue , arraybasedqueuestring)
+		TEST(Queue, ArrayBasedQueueString)
 		{
-			ArrayBasedQueue<std::string> cheese;
-			cheese.enQueue("chocky milk");
-			ASSERT_EQ( cheese.peekFront(), "chocky milk");
+			ArrayBasedQueue<std::string> q;
+			q.enQueue("chocky milk");
+			ASSERT_EQ( q.peekFront(), "chocky milk");
 		}
 
  
