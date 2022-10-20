@@ -42,7 +42,7 @@ bool ArrayBasedStack<T>::isEmpty() const{
 }
 
 template<class T>
-bool ArrayBasedStack<T>::push(const int & val) {
+bool ArrayBasedStack<T>::push(const  T& val) {
 	for (int i = 0; i < 4; i++) {
 		if (stack[i] == 0) {
 			stack[i] = val;
