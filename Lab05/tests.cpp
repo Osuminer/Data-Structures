@@ -1,6 +1,7 @@
 // tests.cpp
 #include "Recursion.h"
 #include <gtest/gtest.h>
+#include "StackQueue.h"
 
 
 		
@@ -76,6 +77,52 @@
 			std::string status = CallSimpleExceptionMethod(4);
 			ASSERT_EQ(std::string("I did not get an Exception"), status);
 
+		}
+
+
+
+		//ArrayBasedStack tests cases***********************************
+
+		TEST(Stack, ArrayBasedStackInt)
+		{
+			ArrayBasedStack<int> s;
+			s.push(1);
+			ASSERT_EQ( s.peek(), 1);
+		}
+		TEST(Stack, ArrayBasedStackDouble)
+		{
+			ArrayBasedStack<double> s;
+			s.push(.42);
+			ASSERT_EQ( s.peek(), .42);
+		}
+		TEST(Stack, ArrayBasedStackString)
+		{
+			ArrayBasedStack<std::string> s;
+			s.push("milk");
+			ASSERT_EQ( s.peek(), "milk");
+		}
+
+
+
+		//ArrayBasedQueue test cases*************************************
+
+		TEST(Queue, ArrayBasedQueueInt)
+		{
+			ArrayBasedQueue<int> q;
+			q.enQueue(1);
+			ASSERT_EQ( q.peekFront(), 1);
+		}
+		TEST(Queue, ArrayBasedQueueDouble)
+		{
+			ArrayBasedQueue<double> q;
+			q.enQueue(.42);
+			ASSERT_EQ( q.peekFront(), .42);
+		}
+		TEST(Queue, ArrayBasedQueueString)
+		{
+			ArrayBasedQueue<std::string> q;
+			q.enQueue("chocky milk");
+			ASSERT_EQ( q.peekFront(), "chocky milk");
 		}
 
  
