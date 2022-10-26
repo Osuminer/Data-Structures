@@ -27,7 +27,7 @@ template<typename T> class Node {
         }
 
         void SetRightNode(Node* n) {
-            m_right = *n;
+            m_right = n;
         }
 
         Node* GetLeftNode() {
@@ -35,13 +35,13 @@ template<typename T> class Node {
         }
 
         void SetLeftNode(Node* n) {
-            m_left = *n;
+            m_left = n;
         }
 
     private:
         T m_val;
-        std::shared_ptr<Node> m_right = nullptr;
-        std::shared_ptr<Node> m_left = nullptr;
+        Node* m_right = nullptr;
+        Node* m_left = nullptr;
 };
 
 template<typename T> class BinaryTree {
@@ -54,13 +54,13 @@ template<typename T> class BinaryTree {
 
         }
 
-        bool Insert(Node<T>* rootNode, Node<T>* newNode) {
+        bool Insert(Node<T>* newNode, Node<T>* rootNode) {
             if (newNode->ReturnValue() >= rootNode->ReturnValue()) {
                 if (rootNode->GetRightNode() == nullptr) {
                     rootNode->SetRightNode(newNode);
                     return true;
                 } else {
-                    Insert(rootNode->GetRightNode(), newNode);
+                    Insert(newNode, rootNode->GetRightNode());
                     m_size++;
                 }
 
@@ -70,7 +70,7 @@ template<typename T> class BinaryTree {
                     rootNode->SetLeftNode(newNode);
                     return true;
                 } else {
-                    Insert(rootNode->GetLeftNode(), newNode);
+                    Insert(newNode, rootNode->GetLeftNode());
                     m_size++;
                 }
             }
@@ -95,6 +95,6 @@ template<typename T> class BinaryTree {
         }
 
     private:
-        Node<T> root = new Node<T>(node);
+        // Node<T> root = new Node<T>();
         int m_size;
 };
