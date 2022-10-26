@@ -1,50 +1,8 @@
-template<typename T> class BinaryTree {
-    public:
-        BinaryTree() {
-            m_size = 0;
-        }
-
-        ~BinaryTree() {
-
-        }
-
-        bool Insert(Node<T>* node) {
-            if (m_size == 0) {
-                
-                return true;
-            }
-
-            if (root.)
-
-        }
-
-        Node<T>* Find(T val) {
-
-        }
-
-        int Size() {
-            return m_size;
-        }
-
-        std::vector<Node<T>> GetAllAscending() {
-
-        }
-
-        void Clear() {
-
-        }
-
-    private:
-        int m_size;
-};
+#include <vector>
 
 template<typename T> class Node {
     public:
-        Node() {
-            m_val = NULL;
-            m_right = nullptr;
-            m_left = nullptr;
-        }
+        Node() = delete;
 
         Node(Node* node) {
             this->m_left = node->GetLeftNode();
@@ -84,4 +42,52 @@ template<typename T> class Node {
         T m_val;
         Node* m_right = nullptr;
         Node* m_left = nullptr;
+};
+
+template<typename T> class BinaryTree {
+    public:
+        BinaryTree() {
+            m_size = 0;
+        }
+
+        ~BinaryTree() {
+
+        }
+
+        bool Insert(Node<T>* newNode) {
+            if (m_size == 0) {
+                
+                return true;
+            }
+
+            if (newNode->ReturnValue > root.ReturnValue()) {
+                root.SetRightNode(newNode);
+                return true;
+            }
+
+            if (newNode->ReturnValue() < root.ReturnValue()) {
+            }
+
+
+        }
+
+        Node<T> Find(T val) {
+
+        }
+
+        int Size() {
+            return m_size;
+        }
+
+        std::vector<T> GetAllAscending() {
+
+        }
+
+        void Clear() {
+
+        }
+
+    private:
+        Node<T> root = new Node<T>(node);
+        int m_size;
 };
