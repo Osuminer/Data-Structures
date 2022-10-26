@@ -2,9 +2,9 @@
 
 int main() {
 
-    Node<int> node(10, nullptr, nullptr);
+    Node<int> node(10);
 
-    BinaryTree<int> BST();
+    BinaryTree<int> BST;
 
 
     return 0;
