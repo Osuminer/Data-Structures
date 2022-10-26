@@ -27,6 +27,10 @@ template<typename T> class Node {
             return m_val;
         }
 
+        void SetValue(T v) {
+            m_val = v;
+        }
+
         Node* GetRightNode() {
             return m_right;
         }
@@ -59,8 +63,8 @@ template<typename T> class BinaryTree {
 
         }
 
-        bool Insert(Node<T>& newNode) {
-            if (Insert(newNode, &root)) {
+        bool Insert(Node<T>* newNode) {
+            if (Insert(newNode, root)) {
                 return true;
             }
 
@@ -69,7 +73,7 @@ template<typename T> class BinaryTree {
 
         bool Insert(Node<T>* newNode, Node<T>* tempRootNode) {
             if (m_size == 0) {
-                root.m_val = newNode->ReturnValue();
+                root->SetValue(newNode->ReturnValue());
             }
 
             if (newNode->ReturnValue() >= tempRootNode->ReturnValue()) {
@@ -112,6 +116,6 @@ template<typename T> class BinaryTree {
         }
 
     private:
-        Node<T> root = new Node<T>();
+        Node<T>* root = new Node<T>();
         int m_size;
 };
