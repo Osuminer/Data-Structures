@@ -40,8 +40,8 @@ template<typename T> class Node {
 
     private:
         T m_val;
-        Node* m_right = nullptr;
-        Node* m_left = nullptr;
+        std::shared_ptr<Node> m_right = nullptr;
+        std::shared_ptr<Node> m_left = nullptr;
 };
 
 template<typename T> class BinaryTree {
@@ -54,21 +54,28 @@ template<typename T> class BinaryTree {
 
         }
 
-        bool Insert(Node<T>* newNode) {
-            if (m_size == 0) {
-                
+        bool Insert(Node<T>* rootNode, Node<T>* newNode) {
+            if (newNode->ReturnValue() >= rootNode->ReturnValue()) {
+                if (rootNode->GetRightNode() == nullptr) {
+                    rootNode->SetRightNode(newNode);
+                    return true;
+                } else {
+                    Insert(rootNode->GetRightNode(), newNode);
+                    m_size++;
+                }
+
                 return true;
+            } else if (newNode->ReturnValue() < rootNode->ReturnValue()) {
+                if (rootNode->GetLeftNode() == nullptr) {
+                    rootNode->SetLeftNode(newNode);
+                    return true;
+                } else {
+                    Insert(rootNode->GetLeftNode(), newNode);
+                    m_size++;
+                }
             }
 
-            if (newNode->ReturnValue > root.ReturnValue()) {
-                root.SetRightNode(newNode);
-                return true;
-            }
-
-            if (newNode->ReturnValue() < root.ReturnValue()) {
-            }
-
-
+            return false;
         }
 
         Node<T> Find(T val) {
