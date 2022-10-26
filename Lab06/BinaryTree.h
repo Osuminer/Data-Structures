@@ -1,8 +1,13 @@
+#pragma once
+
 #include <vector>
 
 template<typename T> class Node {
     public:
-        Node() = delete;
+        Node() {
+            m_left = nullptr;
+            m_right = nullptr;
+        }
 
         Node(Node* node) {
             this->m_left = node->GetLeftNode();
@@ -40,8 +45,8 @@ template<typename T> class Node {
 
     private:
         T m_val;
-        Node* m_right = nullptr;
-        Node* m_left = nullptr;
+        Node* m_right;
+        Node* m_left;
 };
 
 template<typename T> class BinaryTree {
@@ -54,24 +59,36 @@ template<typename T> class BinaryTree {
 
         }
 
-        bool Insert(Node<T>* newNode, Node<T>* rootNode) {
-            if (newNode->ReturnValue() >= rootNode->ReturnValue()) {
-                if (rootNode->GetRightNode() == nullptr) {
-                    rootNode->SetRightNode(newNode);
+        bool Insert(Node<T>& newNode) {
+            if (Insert(newNode, &root)) {
+                return true;
+            }
+
+            return false;
+        }
+
+        bool Insert(Node<T>* newNode, Node<T>* tempRootNode) {
+            if (m_size == 0) {
+                root.m_val = newNode->ReturnValue();
+            }
+
+            if (newNode->ReturnValue() >= tempRootNode->ReturnValue()) {
+                if (tempRootNode->GetRightNode() == nullptr) {
+                    tempRootNode->SetRightNode(newNode);
+                    m_size++;
                     return true;
                 } else {
-                    Insert(newNode, rootNode->GetRightNode());
-                    m_size++;
+                    Insert(newNode, tempRootNode->GetRightNode());
                 }
 
                 return true;
-            } else if (newNode->ReturnValue() < rootNode->ReturnValue()) {
-                if (rootNode->GetLeftNode() == nullptr) {
-                    rootNode->SetLeftNode(newNode);
+            } else if (newNode->ReturnValue() < tempRootNode->ReturnValue()) {
+                if (tempRootNode->GetLeftNode() == nullptr) {
+                    tempRootNode->SetLeftNode(newNode);
+                    m_size++;
                     return true;
                 } else {
-                    Insert(newNode, rootNode->GetLeftNode());
-                    m_size++;
+                    Insert(newNode, tempRootNode->GetLeftNode());
                 }
             }
 
@@ -95,6 +112,6 @@ template<typename T> class BinaryTree {
         }
 
     private:
-        // Node<T> root = new Node<T>();
+        Node<T> root = new Node<T>();
         int m_size;
 };
