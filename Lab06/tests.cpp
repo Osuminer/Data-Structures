@@ -19,20 +19,20 @@ TEST(Insert, insert1){
 }
 
 TEST(Insert, insert2){
-    BinaryTree<int> cheese;
-    Node<int> one(1);
-    Node<int> two(2);
-    Node<int> three(3);
-    Node<int> four(4);
-    Node<int> five(5);
+    BinaryTree<int> BST;
+    Node<int>* node1 = new Node<int>(1);
+    Node<int>* node2 = new Node<int>(2);
+    Node<int>* node3 = new Node<int>(3);
+    Node<int>* node4 = new Node<int>(4);
+    Node<int>* node5 = new Node<int>(5);
 
-    // cheese.Insert(one);
-    // cheese.Insert(two);
-    // cheese.Insert(three);
-    // cheese.Insert(four);
-    // cheese.Insert(five);
+    BST.Insert(node1);
+    BST.Insert(node2);
+    BST.Insert(node3);
+    BST.Insert(node4);
+    BST.Insert(node5);
 
-    // ASSERT_EQ( cheese.Size() , 5);
+    ASSERT_EQ( BST.Size() , 5);
 }
 
 // Find test cases ******************************************
@@ -52,18 +52,44 @@ TEST(Find, find1){
 }
 
 TEST(Find, find2){
+    Node<double>* node1 = new Node<double>(1.11);
+    Node<double>* node2 = new Node<double>(1.12);
+    Node<double>* node3 = new Node<double>(1.13);
 
+    BinaryTree<double> BST;
+
+    BST.Insert(node1);
+    BST.Insert(node2);
+    BST.Insert(node3);
+
+    ASSERT_EQ( node3->ReturnValue(), BST.Find(1.13).ReturnValue() );
 }
 
 // Size test Cases *******************************************
 
 TEST(Size, nullsize){
+    BinaryTree<int> BST;
 
+    ASSERT_EQ( BST.Size(), 0 );
 }
 
 TEST(Size, size1){
+    BinaryTree<int> BST;
+    Node<int>* node1 = new Node<int>(1);
+    Node<int>* node2 = new Node<int>(2);
+    Node<int>* node3 = new Node<int>(3);
+    Node<int>* node4 = new Node<int>(4);
+    Node<int>* node5 = new Node<int>(5);
 
+    BST.Insert(node1);
+    BST.Insert(node2);
+    BST.Insert(node3);
+    BST.Insert(node4);
+    BST.Insert(node5);
+
+    ASSERT_EQ( BST.Size() , 5);
 }
+
 
 // Get All Ascending test cases *******************************
 
