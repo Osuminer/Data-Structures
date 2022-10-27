@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "BinaryTree.h"
+#include <vector>
 
 // Insert test cases ****************************************
 
@@ -68,7 +69,24 @@ TEST(Size, size1){
 // Get All Ascending test cases *******************************
 
 TEST(AllAscending, getAllAscending1){
+    Node<int>* node = new Node<int>(10);
+    Node<int>* node2 = new Node<int>(9);
+    Node<int>* node3 = new Node<int>(12);
 
+    // std::shared_ptr<Node<int>> node(new Node<int>(10));
+
+    BinaryTree<int> BST;
+
+    BST.Insert(node);
+    BST.Insert(node2);
+    BST.Insert(node3);
+
+    std::vector<int> v;
+    v.push_back(9);
+    v.push_back(10);
+    v.push_back(12);
+
+    ASSERT_EQ(v, BST.GetAllAscending());
 }
 
 TEST(AllAscending, getAllAscending2){

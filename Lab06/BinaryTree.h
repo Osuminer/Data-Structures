@@ -118,8 +118,7 @@ template<typename T> class BinaryTree {
         /// @param val Value to find
         /// @return 
         Node<T> Find(T val) {
-            Node<T> l = Find(val, root);
-            return l;
+            return Find(val, root);
         }
 
         /// @brief Find Node with given value from specified root node
@@ -143,9 +142,21 @@ template<typename T> class BinaryTree {
         }
 
         // Get Ascending -------------------------------------------------------------------------------
-
         std::vector<T> GetAllAscending() {
+            std::vector<T> v;
+            InOrderSearch(v, root);
+            return v;
+        }
 
+        void InOrderSearch(std::vector<T> &v, Node<T>* tempRoot) {
+            if (tempRoot->GetLeftNode() == nullptr) {
+                v.push_back(tempRoot->ReturnValue());
+                return;
+            }
+
+            InOrderSearch(v, tempRoot->GetLeftNode());
+            v.push_back(tempRoot->ReturnValue());
+            InOrderSearch(v, tempRoot->GetRightNode());
         }
 
         // Clear -------------------------------------------------------------------------------
