@@ -157,7 +157,7 @@ template<typename T> class BinaryTree {
                 v.push_back(tempRoot->ReturnValue());
                 InOrderSearch(v, tempRoot->GetRightNode());
                 return;
-            }
+            } 
 
             InOrderSearch(v, tempRoot->GetLeftNode());
             v.push_back(tempRoot->ReturnValue());
