@@ -5,13 +5,15 @@
 
 TEST(Insert, insert1){
     Node<int>* node = new Node<int>(10);
-    Node<int>* node2 = new Node<int>(12);
+    Node<int>* node2 = new Node<int>(9);
+    Node<int>* node3 = new Node<int>(12);
 
     BinaryTree<int> BST;
 
     BST.Insert(node);
+    BST.Insert(node2);
 
-    ASSERT_TRUE( BST.Insert(node2) );
+    ASSERT_TRUE( BST.Insert(node3) );
 }
 
 TEST(Insert, insert2){

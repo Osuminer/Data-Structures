@@ -51,6 +51,8 @@ template<typename T> class Node {
         T m_val;
         Node* m_right;
         Node* m_left;
+
+        // std::shared_ptr<Node>m_right();
 };
 
 template<typename T> class BinaryTree {
@@ -74,6 +76,8 @@ template<typename T> class BinaryTree {
         bool Insert(Node<T>* newNode, Node<T>* tempRootNode) {
             if (m_size == 0) {
                 root->SetValue(newNode->ReturnValue());
+                m_size++;
+                return true;
             }
 
             if (newNode->ReturnValue() >= tempRootNode->ReturnValue()) {
