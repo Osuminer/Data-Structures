@@ -140,11 +140,31 @@ TEST(AllAscending, getAllAscending2){
 // Clear test cases *******************************************
 
 TEST(Clear, clear1){
+    Node<int>* node = new Node<int>(10);
+    Node<int>* node2 = new Node<int>(9);
 
+    BinaryTree<int> BST;
+
+    BST.Insert(node);
+    BST.Insert(node2);
+
+    BST.Clear();
+
+    ASSERT_EQ(BST.Size(), 0);
 }
 
 TEST(Clear, clear2){
+    Node<double>* node = new Node<double>(10.1);
+    Node<double>* node2 = new Node<double>(9.1);
 
+    BinaryTree<double> BST;
+
+    BST.Insert(node);
+    BST.Insert(node2);
+
+    BST.Clear();
+
+    ASSERT_EQ(BST.Size(), 0);
 }
 
 int main(int argc, char **argv) {
