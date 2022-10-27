@@ -8,6 +8,8 @@ TEST(Insert, insert1){
     Node<int>* node2 = new Node<int>(9);
     Node<int>* node3 = new Node<int>(12);
 
+    // std::shared_ptr<Node<int>> node(new Node<int>(10));
+
     BinaryTree<int> BST;
 
     BST.Insert(node);
@@ -36,7 +38,17 @@ TEST(Insert, insert2){
 // Find test cases ******************************************
 
 TEST(Find, find1){
+    Node<int>* node = new Node<int>(10);
+    Node<int>* node2 = new Node<int>(9);
+    Node<int>* node3 = new Node<int>(12);
 
+    BinaryTree<int> BST;
+
+    BST.Insert(node);
+    BST.Insert(node2);
+    BST.Insert(node3);
+
+    ASSERT_EQ(node2->ReturnValue(), BST.Find(9).ReturnValue());
 }
 
 TEST(Find, find2){

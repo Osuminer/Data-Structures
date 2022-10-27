@@ -65,6 +65,11 @@ template<typename T> class BinaryTree {
 
         }
 
+        // Insert -------------------------------------------------------------------------------
+
+        /// @brief Insert with base tree root node
+        /// @param newNode Node pointer to insert
+        /// @return 
         bool Insert(Node<T>* newNode) {
             if (Insert(newNode, root)) {
                 return true;
@@ -73,6 +78,10 @@ template<typename T> class BinaryTree {
             return false;
         }
 
+        /// @brief Insert with specified root node, used for recursion
+        /// @param newNode Node pointer to insert
+        /// @param tempRootNode Root node pointer to start from
+        /// @return 
         bool Insert(Node<T>* newNode, Node<T>* tempRootNode) {
             if (m_size == 0) {
                 root->SetValue(newNode->ReturnValue());
@@ -103,17 +112,43 @@ template<typename T> class BinaryTree {
             return false;
         }
 
-        Node<T> Find(T val) {
+        // Find -------------------------------------------------------------------------------
 
+        /// @brief Find node with given value from base root node
+        /// @param val Value to find
+        /// @return 
+        Node<T> Find(T val) {
+            Node<T> l = Find(val, root);
+            return l;
         }
+
+        /// @brief Find Node with given value from specified root node
+        /// @param val Value to find
+        /// @param tempRoot Root node to start search from
+        /// @return 
+        Node<T> Find(T val, Node<T>* tempRoot) {
+            if (tempRoot->ReturnValue() == val) {
+                return tempRoot;
+            } else if (val > tempRoot->ReturnValue()) {
+                return Find(val, tempRoot->GetRightNode());
+            } else if (val < tempRoot->ReturnValue()) {
+                return Find(val, tempRoot->GetLeftNode());
+            }
+        }
+
+        // Size -------------------------------------------------------------------------------
 
         int Size() {
             return m_size;
         }
 
+        // Get Ascending -------------------------------------------------------------------------------
+
         std::vector<T> GetAllAscending() {
 
         }
+
+        // Clear -------------------------------------------------------------------------------
 
         void Clear() {
 
