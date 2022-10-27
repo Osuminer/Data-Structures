@@ -149,20 +149,27 @@ template<typename T> class BinaryTree {
         }
 
         void InOrderSearch(std::vector<T> &v, Node<T>* tempRoot) {
+            if (tempRoot == nullptr) {
+                return;
+            }
+
             if (tempRoot->GetLeftNode() == nullptr) {
                 v.push_back(tempRoot->ReturnValue());
+                InOrderSearch(v, tempRoot->GetRightNode());
                 return;
             }
 
             InOrderSearch(v, tempRoot->GetLeftNode());
             v.push_back(tempRoot->ReturnValue());
             InOrderSearch(v, tempRoot->GetRightNode());
+            return;
+
         }
 
         // Clear -------------------------------------------------------------------------------
 
         void Clear() {
-
+            
         }
 
     private:
