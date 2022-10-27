@@ -169,7 +169,9 @@ template<typename T> class BinaryTree {
         // Clear -------------------------------------------------------------------------------
 
         void Clear() {
-            
+            root->SetLeftNode(nullptr);
+            root->SetRightNode(nullptr);
+            m_size = 0;
         }
 
     private:
