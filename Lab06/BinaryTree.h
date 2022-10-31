@@ -27,6 +27,10 @@ template<typename T> class Node {
             return m_val;
         }
 
+        void SetValue(T v) {
+            m_val = v;
+        }
+
         Node* GetRightNode() {
             return m_right;
         }
@@ -47,6 +51,8 @@ template<typename T> class Node {
         T m_val;
         Node* m_right;
         Node* m_left;
+
+        // std::shared_ptr<Node>m_right();
 };
 
 template<typename T> class BinaryTree {
@@ -59,17 +65,28 @@ template<typename T> class BinaryTree {
 
         }
 
-        bool Insert(Node<T>& newNode) {
-            if (Insert(newNode, &root)) {
+        // Insert -------------------------------------------------------------------------------
+
+        /// @brief Insert with base tree root node
+        /// @param newNode Node pointer to insert
+        /// @return 
+        bool Insert(Node<T>* newNode) {
+            if (Insert(newNode, root)) {
                 return true;
             }
 
             return false;
         }
 
+        /// @brief Insert with specified root node, used for recursion
+        /// @param newNode Node pointer to insert
+        /// @param tempRootNode Root node pointer to start from
+        /// @return 
         bool Insert(Node<T>* newNode, Node<T>* tempRootNode) {
             if (m_size == 0) {
-                root.m_val = newNode->ReturnValue();
+                root->SetValue(newNode->ReturnValue());
+                m_size++;
+                return true;
             }
 
             if (newNode->ReturnValue() >= tempRootNode->ReturnValue()) {
@@ -95,23 +112,69 @@ template<typename T> class BinaryTree {
             return false;
         }
 
-        Node<T> Find(T val) {
+        // Find -------------------------------------------------------------------------------
 
+        /// @brief Find node with given value from base root node
+        /// @param val Value to find
+        /// @return 
+        Node<T> Find(T val) {
+            return Find(val, root);
         }
+
+        /// @brief Find Node with given value from specified root node
+        /// @param val Value to find
+        /// @param tempRoot Root node to start search from
+        /// @return 
+        Node<T> Find(T val, Node<T>* tempRoot) {
+            if (tempRoot->ReturnValue() == val) {
+                return tempRoot;
+            } else if (val > tempRoot->ReturnValue()) {
+                return Find(val, tempRoot->GetRightNode());
+            } else if (val < tempRoot->ReturnValue()) {
+                return Find(val, tempRoot->GetLeftNode());
+            }
+        }
+
+        // Size -------------------------------------------------------------------------------
 
         int Size() {
             return m_size;
         }
 
+        // Get Ascending -------------------------------------------------------------------------------
         std::vector<T> GetAllAscending() {
+            std::vector<T> v;
+            InOrderSearch(v, root);
+            return v;
+        }
+
+        void InOrderSearch(std::vector<T> &v, Node<T>* tempRoot) {
+            if (tempRoot == nullptr) {
+                return;
+            }
+
+            if (tempRoot->GetLeftNode() == nullptr) {
+                v.push_back(tempRoot->ReturnValue());
+                InOrderSearch(v, tempRoot->GetRightNode());
+                return;
+            } 
+
+            InOrderSearch(v, tempRoot->GetLeftNode());
+            v.push_back(tempRoot->ReturnValue());
+            InOrderSearch(v, tempRoot->GetRightNode());
+            return;
 
         }
 
-        void Clear() {
+        // Clear -------------------------------------------------------------------------------
 
+        void Clear() {
+            root->SetLeftNode(nullptr);
+            root->SetRightNode(nullptr);
+            m_size = 0;
         }
 
     private:
-        Node<T> root = new Node<T>();
+        Node<T>* root = new Node<T>();
         int m_size;
 };
