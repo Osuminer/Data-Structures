@@ -116,25 +116,24 @@ TEST(AllAscending, getAllAscending1){
 }
 
 TEST(AllAscending, getAllAscending2){
-    BinaryTree<std::string> BST;
+    Node<double>* node = new Node<double>(10.2);
+    Node<double>* node2 = new Node<double>(9.4);
+    Node<double>* node3 = new Node<double>(12.6);
 
-    Node<std::string>* node = new Node<std::string>("Halloween");
-    Node<std::string>* node2 = new Node<std::string>("A Nightmare On Elm Street");
-    Node<std::string>* node3 = new Node<std::string>("Hocus Pocus");
-    Node<std::string>* node4 = new Node<std::string>("Beetlejuice");
+    // std::shared_ptr<Node<int>> node(new Node<int>(10));
+
+    BinaryTree<double> BST;
 
     BST.Insert(node);
     BST.Insert(node2);
     BST.Insert(node3);
-    BST.Insert(node4);
 
-    std::vector<std::string> v;
-    v.push_back("Halloween");
-    v.push_back("A Nightmare On Elm Street");
-    v.push_back("Hocus Pocus");
-    v.push_back("Beetlejuice");
+    std::vector<double> v;
+    v.push_back(9.4);
+    v.push_back(10.2);
+    v.push_back(12.6);
 
-    ASSERT_EQ(BST.GetAllAscending(), v);
+    ASSERT_EQ(v, BST.GetAllAscending());
 }
 
 // Clear test cases *******************************************
