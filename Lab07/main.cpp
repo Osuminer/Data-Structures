@@ -6,4 +6,4 @@
 
 using namespace std;
 
-void main(){}
+int main(){}
