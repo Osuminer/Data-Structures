@@ -26,7 +26,32 @@ void Sort(int (&m_array)[], int m_size) {
     }
 }
 
+void Sort(std::vector<int>& v, int m_size) {
+    int min;
+    int temp;
+
+    if (m_size == 1) {
+        return;
+    }
+
+    for (int i = 0; i < m_size-1; i++) {
+        min = i;
+
+        for (int j = i+1; j < m_size; j++) {
+            if (v[j] < v[min]) {
+                min = j;
+            }
+        }
+        temp = v[i];
+        v[i] = v[min];
+        v[min] = temp;
+    }
+}
+
+// Array Based -----------------------------------------------------------------------------------------------------
+
 ArrayBasedPriorityQueue::ArrayBasedPriorityQueue(){}
+
 ArrayBasedPriorityQueue::~ArrayBasedPriorityQueue(){
     m_size = 0;
 }
@@ -57,20 +82,36 @@ bool ArrayBasedPriorityQueue::isEmpty() const{
     return m_size == 0;
 }
 
+// Heap Based -----------------------------------------------------------------------------------------------------
+
 HeapBasedPriorityQueue::HeapBasedPriorityQueue(){}
 HeapBasedPriorityQueue::~HeapBasedPriorityQueue(){}
+
 void HeapBasedPriorityQueue::Insert(int num){
     Node<int>* n = new Node(num);
 
     InOrderSearch(n, m_root);
+
+    m_size++;
 }
-void HeapBasedPriorityQueue::DeQueue() {}
+void HeapBasedPriorityQueue::DeQueue() {
+
+    m_size--;
+}
+
 std::string HeapBasedPriorityQueue::PrintPriorityQueue() {
     std::vector<int> v;
+    std::string temp = "";
 
     InOrderSearch(v, m_root);
 
     Sort(v, m_size);
+
+    for (int i = m_size-1; i >= 0; i--) {
+        temp.append(std::to_string(v[i]) + " ");
+    }
+
+    return temp;
 }
 
 bool HeapBasedPriorityQueue::isEmpty() const{
@@ -78,25 +119,30 @@ bool HeapBasedPriorityQueue::isEmpty() const{
 }
 void HeapBasedPriorityQueue::Swap(){}
 
-void HeapBasedPriorityQueue::InOrderSearch(Node<int>* n, Node<int>* tempRoot) {
-    if (tempRoot == nullptr) {
+bool HeapBasedPriorityQueue::InOrderSearch(Node<int>* n, Node<int>* tempRoot) {
+    if (m_size == 0) {
         m_root->SetValue(n->ReturnValue());
-        return;
+        return true;
     }
 
     if (tempRoot->GetLeftNode() == nullptr) {
         tempRoot->SetLeftNode(n);
-        return;
+        return true;
     }
 
     if (tempRoot->GetRightNode() == nullptr) {
         tempRoot->SetRightNode(n);
-        return;
+        return true;
     }
 
-    InOrderSearch(n, tempRoot->GetLeftNode());
-    InOrderSearch(n ,tempRoot->GetRightNode());
-    return;
+    if (InOrderSearch(n, tempRoot->GetLeftNode())) {
+        return true;
+    }
+    if (InOrderSearch(n ,tempRoot->GetRightNode())) {
+        return true;
+    }
+    
+    return false;
 }
 
 void HeapBasedPriorityQueue::InOrderSearch(std::vector<int>& v, Node<int>* tempRoot) {
