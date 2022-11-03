@@ -13,10 +13,10 @@ int main(){
 
     srand(1);   // Seed array to 1
 
-    const int ARRAYSIZE = 500;
-    //const int ARRAYSIZE = 1000; 
-    //const int ARRAYSIZE = 2000; 
-    //const int ARRAYSIZE = 5000; 
+    // const int ARRAYSIZE = 500;
+    // const int ARRAYSIZE = 1000; 
+    // const int ARRAYSIZE = 2000; 
+    const int ARRAYSIZE = 5000; 
     
     // Size of array
 

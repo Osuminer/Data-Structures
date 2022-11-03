@@ -1,6 +1,6 @@
 #include <string>
 
-const int SIZE = 500;
+const int SIZE = 5000;
 
 class PriorityQueue {
     public:
