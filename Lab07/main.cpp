@@ -43,7 +43,7 @@ int main(){
 
     // array dequeue ----------------------------------------------------------
 
-    auto arrayAfterDequeue = Clock::now();
+    auto arrayBeforeDequeue = Clock::now();
     
     for (int i = 0; i < ARRAYSIZE; i++) {
         alpha.DeQueue();
