@@ -1,5 +1,7 @@
 #include "PriorityQueue.h"
+#include "Node.h"
 #include <string>
+#include <vector>
 
 
 void Sort(int (&m_array)[], int m_size) {
@@ -95,7 +97,7 @@ void HeapBasedPriorityQueue::Swap(int& a, int& b){
     temp = a;
     a = b;
     b = temp;
-}
+    }
 
 void HeapBasedPriorityQueue::BubbleUp(int nodeIndex) {
     while (m_heap[nodeIndex] > m_heap[GetParent(nodeIndex)] && nodeIndex > 0) {
@@ -107,11 +109,11 @@ void HeapBasedPriorityQueue::BubbleUp(int nodeIndex) {
 
 int HeapBasedPriorityQueue::GetParent(int nodeIndex) {
     return ((nodeIndex - 1) / 2);
-}
+    }
 
 int HeapBasedPriorityQueue::GetLeft(int nodeIndex) {
     return ((2 * nodeIndex) + 1);
-}
+    } 
 
 int HeapBasedPriorityQueue::GetRight(int nodeIndex) {
     return ((2 * nodeIndex) + 2);
