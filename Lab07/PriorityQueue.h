@@ -1,6 +1,5 @@
 #include <string>
 #include <vector>
-#include "Node.h"
 
 const int SIZE = 500;
 
@@ -44,6 +43,7 @@ class HeapBasedPriorityQueue : PriorityQueue{
         int GetRight(int);
 
         void BubbleUp(int);
+        void BubbleDown(int);
 
     private:
         int m_heap[SIZE];
