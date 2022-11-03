@@ -19,6 +19,7 @@ int main(){
     //const int ARRAYSIZE = 5000; 
     
     // Size of array
+
     int arr[ARRAYSIZE];         // Array to sort
 
     // Fill array with random numbers from 0 to RANDMAX
@@ -29,45 +30,46 @@ int main(){
     ArrayBasedPriorityQueue alpha;
     HeapBasedPriorityQueue beta;
 
-    auto t1 = Clock::now(); //-------------------------------------------------
+
+    // array insert ------------------------------------------------------------
+
+    auto t1 = Clock::now(); 
 
     for (int i = 0; i < ARRAYSIZE; i++) {
         alpha.Insert(arr[i]);
     }
     
-    auto t2 = Clock::now(); //-------------------------------------------------
+    auto t2 = Clock::now(); 
 
-    // array dequeue
+    // array dequeue ----------------------------------------------------------
 
-    auto t3 = Clock::now(); //-------------------------------------------------
+    auto t3 = Clock::now();
     
     for (int i = 0; i < ARRAYSIZE; i++) {
         alpha.DeQueue();
     }
 
-    auto t4 = Clock::now(); //-------------------------------------------------
+    auto t4 = Clock::now(); 
 
+    // heap insert ------------------------------------------------------------
 
-    // heap insert
+    auto t5 = Clock::now(); 
 
-    auto t5 = Clock::now(); //-------------------------------------------------
-    
     for (int i = 0; i < ARRAYSIZE; i++) {
         beta.Insert(arr[i]);
     }
 
-    auto t6 = Clock::now(); //-------------------------------------------------
+    auto t6 = Clock::now(); 
 
-    // heap dequeue
+    // heap dequeue -----------------------------------------------------------
 
-    auto t7 = Clock::now(); //-------------------------------------------------
+    auto t7 = Clock::now(); 
     
     for (int i = 0; i < ARRAYSIZE; i++) {
         beta.DeQueue();
     }
 
-    auto t8 = Clock::now(); //-------------------------------------------------
-
+    auto t8 = Clock::now(); 
 
     cout << "\nTime taken array insert: " << chrono::duration_cast<chrono::nanoseconds>(t2 - t1).count() << "ns\n" << endl;
     cout << "\nTime taken array dequeue: " << chrono::duration_cast<chrono::nanoseconds>(t4 - t3).count() << "ns\n" << endl;
