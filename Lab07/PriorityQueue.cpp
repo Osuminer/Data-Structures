@@ -2,7 +2,6 @@
 #include <string>
 
 
-
 void Sort(int (&m_array)[], int m_size) {
     int min;
     int temp;
