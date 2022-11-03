@@ -1,7 +1,5 @@
 #include "PriorityQueue.h"
-#include "Node.h"
 #include <string>
-#include <vector>
 
 
 void Sort(int (&m_array)[], int m_size) {

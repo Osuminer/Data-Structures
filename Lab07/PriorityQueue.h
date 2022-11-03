@@ -1,5 +1,4 @@
 #include <string>
-#include <vector>
 
 const int SIZE = 500;
 
