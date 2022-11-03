@@ -72,7 +72,7 @@ int main(){
     auto heapAfterDequeue = Clock::now(); 
 
     cout << "\nTime taken array insert: " << chrono::duration_cast<chrono::nanoseconds>(arrayAfterInsert - arrayBeforeInsert).count() << "ns\n" << endl;
-    cout << "\nTime taken array dequeue: " << chrono::duration_cast<chrono::nanoseconds>(arrayAfterDequeue - arrayAfterDequeue).count() << "ns\n" << endl;
+    cout << "\nTime taken array dequeue: " << chrono::duration_cast<chrono::nanoseconds>(arrayAfterDequeue - arrayBeforeDequeue).count() << "ns\n" << endl;
     cout << "\nTime taken heap insert: " << chrono::duration_cast<chrono::nanoseconds>(heapAfterInsert - heapBeforeInsert).count() << "ns\n" << endl;
     cout << "\nTime taken heap dequeue: " << chrono::duration_cast<chrono::nanoseconds>(heapAfterDequeue - heapBeforeDequeue).count() << "ns\n" << endl;
 
