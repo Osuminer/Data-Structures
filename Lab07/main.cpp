@@ -5,7 +5,7 @@
 #include <fstream>
 #include <chrono>
 
-typedef chrono::high_resolution_clock Clock;
+typedef std::chrono::high_resolution_clock Clock;
 
 using namespace std;
 
@@ -33,48 +33,48 @@ int main(){
 
     // array insert ------------------------------------------------------------
 
-    auto t1 = Clock::now(); 
+    auto arrayBeforeInsert = Clock::now(); 
 
     for (int i = 0; i < ARRAYSIZE; i++) {
         alpha.Insert(arr[i]);
     }
     
-    auto t2 = Clock::now(); 
+    auto arrayAfterInsert = Clock::now(); 
 
     // array dequeue ----------------------------------------------------------
 
-    auto t3 = Clock::now();
+    auto arrayAfterDequeue = Clock::now();
     
     for (int i = 0; i < ARRAYSIZE; i++) {
         alpha.DeQueue();
     }
 
-    auto t4 = Clock::now(); 
+    auto arrayAfterDequeue = Clock::now(); 
 
     // heap insert ------------------------------------------------------------
 
-    auto t5 = Clock::now(); 
+    auto heapBeforeInsert = Clock::now(); 
 
     for (int i = 0; i < ARRAYSIZE; i++) {
         beta.Insert(arr[i]);
     }
 
-    auto t6 = Clock::now(); 
+    auto heapAfterInsert = Clock::now(); 
 
     // heap dequeue -----------------------------------------------------------
 
-    auto t7 = Clock::now(); 
+    auto heapBeforeDequeue = Clock::now(); 
     
     for (int i = 0; i < ARRAYSIZE; i++) {
         beta.DeQueue();
     }
 
-    auto t8 = Clock::now(); 
+    auto heapAfterDequeue = Clock::now(); 
 
-    cout << "\nTime taken array insert: " << chrono::duration_cast<chrono::nanoseconds>(t2 - t1).count() << "ns\n" << endl;
-    cout << "\nTime taken array dequeue: " << chrono::duration_cast<chrono::nanoseconds>(t4 - t3).count() << "ns\n" << endl;
-    cout << "\nTime taken heap insert: " << chrono::duration_cast<chrono::nanoseconds>(t6 - t5).count() << "ns\n" << endl;
-    cout << "\nTime taken heap dequeue: " << chrono::duration_cast<chrono::nanoseconds>(t8 - t7).count() << "ns\n" << endl;
+    cout << "\nTime taken array insert: " << chrono::duration_cast<chrono::nanoseconds>(arrayAfterInsert - arrayBeforeInsert).count() << "ns\n" << endl;
+    cout << "\nTime taken array dequeue: " << chrono::duration_cast<chrono::nanoseconds>(arrayAfterDequeue - arrayAfterDequeue).count() << "ns\n" << endl;
+    cout << "\nTime taken heap insert: " << chrono::duration_cast<chrono::nanoseconds>(heapAfterInsert - heapBeforeInsert).count() << "ns\n" << endl;
+    cout << "\nTime taken heap dequeue: " << chrono::duration_cast<chrono::nanoseconds>(heapAfterDequeue - heapBeforeDequeue).count() << "ns\n" << endl;
 
     return 0;
 
