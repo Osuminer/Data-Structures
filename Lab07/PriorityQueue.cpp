@@ -73,8 +73,10 @@ void HeapBasedPriorityQueue::Insert(int num){
     m_size++;
 }
 void HeapBasedPriorityQueue::DeQueue() {
-
+    m_heap[0] = m_heap[m_size-1];
     m_size--;
+
+    BubbleDown(0);
 }
 
 std::string HeapBasedPriorityQueue::PrintPriorityQueue() {
@@ -107,14 +109,45 @@ void HeapBasedPriorityQueue::BubbleUp(int nodeIndex) {
     }
 }
 
+void HeapBasedPriorityQueue::BubbleDown(int nodeIndex) {
+    int maxIndex = nodeIndex;
+
+    int leftIndex = GetLeft(nodeIndex);
+    int rightIndex = GetRight(nodeIndex);
+
+    // If left child node is greater than current max node, then set new max index
+    if (leftIndex < m_size && m_heap[leftIndex] > m_heap[maxIndex]) {
+        maxIndex = leftIndex;
+    }
+
+    // If right child node is greater than current max node, then set new max index
+    if (rightIndex < m_size && m_heap[rightIndex] > m_heap[maxIndex]) {
+        maxIndex = rightIndex;
+    }
+
+    if (nodeIndex != maxIndex) {
+        Swap(m_heap[nodeIndex], m_heap[maxIndex]);
+        BubbleDown(maxIndex);
+    }
+}
+
+/// @brief Get index of parent node
+/// @param nodeIndex 
+/// @return 
 int HeapBasedPriorityQueue::GetParent(int nodeIndex) {
     return ((nodeIndex - 1) / 2);
     }
 
+/// @brief Get index of left child node
+/// @param nodeIndex 
+/// @return 
 int HeapBasedPriorityQueue::GetLeft(int nodeIndex) {
     return ((2 * nodeIndex) + 1);
     } 
 
+/// @brief Get index of right child node
+/// @param nodeIndex 
+/// @return 
 int HeapBasedPriorityQueue::GetRight(int nodeIndex) {
     return ((2 * nodeIndex) + 2);
 }

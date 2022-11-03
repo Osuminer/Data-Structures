@@ -18,7 +18,7 @@ int main(){
     //const int ARRAYSIZE = 2000; 
     //const int ARRAYSIZE = 5000; 
     
-      // Size of array
+    // Size of array
     int arr[ARRAYSIZE];         // Array to sort
 
     // Fill array with random numbers from 0 to RANDMAX
