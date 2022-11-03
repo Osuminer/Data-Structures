@@ -37,11 +37,15 @@ class HeapBasedPriorityQueue : PriorityQueue{
         void DeQueue() override;
         std::string PrintPriorityQueue() override;
         bool isEmpty() const override;
-        void Swap();
-        bool InOrderSearch(Node<int>*, Node<int>*);
-        void InOrderSearch(std::vector<int>&, Node<int>*);
+        void Swap(int&, int&);
+
+        int GetParent(int);
+        int GetLeft(int);
+        int GetRight(int);
+
+        void BubbleUp(int);
 
     private:
-        Node<int>* m_root = new Node<int>();
+        int m_heap[SIZE];
         int m_size = 0;
 };

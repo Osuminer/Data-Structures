@@ -98,7 +98,7 @@ TEST(HeapBased, Insert2) {
     a.Insert(6);
     a.Insert(1);
 
-    ASSERT_EQ("6 4 3 1 ", a.PrintPriorityQueue());
+    ASSERT_EQ("6 3 4 1 ", a.PrintPriorityQueue());
 }
 
 TEST(HeapBased, DeQueue1) {
