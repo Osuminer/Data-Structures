@@ -26,19 +26,53 @@ int main(){
         arr[i] = rand();
     }
 
-    auto t1 = Clock::now();
-
     ArrayBasedPriorityQueue alpha;
-    //HeapBasedPriorityQueue alpha;
+    HeapBasedPriorityQueue beta;
+
+    auto t1 = Clock::now(); //-------------------------------------------------
 
     for (int i = 0; i < ARRAYSIZE; i++) {
         alpha.Insert(arr[i]);
-        //alpha.Dequeue(arr[i]);
     }
     
-    auto t2 = Clock::now();
+    auto t2 = Clock::now(); //-------------------------------------------------
 
-    cout << "\nTime taken: " << chrono::duration_cast<chrono::nanoseconds>(t2 - t1).count() << "ns\n" << endl;
+    // array dequeue
+
+    auto t3 = Clock::now(); //-------------------------------------------------
+    
+    for (int i = 0; i < ARRAYSIZE; i++) {
+        alpha.DeQueue();
+    }
+
+    auto t4 = Clock::now(); //-------------------------------------------------
+
+
+    // heap insert
+
+    auto t5 = Clock::now(); //-------------------------------------------------
+    
+    for (int i = 0; i < ARRAYSIZE; i++) {
+        beta.Insert(arr[i]);
+    }
+
+    auto t6 = Clock::now(); //-------------------------------------------------
+
+    // heap dequeue
+
+    auto t7 = Clock::now(); //-------------------------------------------------
+    
+    for (int i = 0; i < ARRAYSIZE; i++) {
+        beta.DeQueue();
+    }
+
+    auto t8 = Clock::now(); //-------------------------------------------------
+
+
+    cout << "\nTime taken array insert: " << chrono::duration_cast<chrono::nanoseconds>(t2 - t1).count() << "ns\n" << endl;
+    cout << "\nTime taken array dequeue: " << chrono::duration_cast<chrono::nanoseconds>(t4 - t3).count() << "ns\n" << endl;
+    cout << "\nTime taken heap insert: " << chrono::duration_cast<chrono::nanoseconds>(t6 - t5).count() << "ns\n" << endl;
+    cout << "\nTime taken heap dequeue: " << chrono::duration_cast<chrono::nanoseconds>(t8 - t7).count() << "ns\n" << endl;
 
     return 0;
 
