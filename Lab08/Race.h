@@ -21,3 +21,5 @@ class Elf : IRace {};
 class Dwarf : IRace {};
 
 class Halfling : IRace {};
+
+class GigaChad : IRace {};
