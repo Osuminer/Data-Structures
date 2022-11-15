@@ -4,7 +4,8 @@ cmake_minimum_required(VERSION 3.0)
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 
-add_library (applibrary main.cpp tests.cpp)
+add_library (applibrary SHARED main.cpp tests.cpp Barbarian.cpp Dwarf.cpp Elf.cpp Game.cpp Gigachad.cpp Halfling.cpp
+             Human.cpp Monk.cpp Paladin.cpp Wizard.cpp)
  
 # Link runTests with what we want to test and the GTest and pthread library
 add_executable(runTests tests.cpp)
