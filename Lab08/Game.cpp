@@ -18,6 +18,11 @@
 #include "Party.h"
 #include "Wizard.h"
 
+
+bool CheckGameStatus() {}
+void Attack(std::shared_ptr<ICharacter> attacker, std::shared_ptr<ICharacter> enemy) {}
+
+
 int main() {
     bool isGameEnded;
 
@@ -66,10 +71,18 @@ int main() {
 
     party2.AddBackRow(monk2);
 
+    //TODO: Sorted dictionary(map) of speeds for attacks turn
+
+    //TODO: Remove said characters from list if their health < 0
+
+    //TODO: Use random for crit chance
+
+    //TODO: Implement way for characters to attack other characters (Divide by armor?)
+
+    //TODO: Game ends when all players in party health < 0
 
     // Game loop start -------------------------------------------------------------------------------------------------------------------
     while (!isGameEnded) {
-
 
 
 
