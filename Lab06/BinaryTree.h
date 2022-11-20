@@ -5,12 +5,12 @@
 template<typename T> class Node {
     public:
         Node() {
-            m_left = nullptr;
+            m_pointer = nullptr;
             m_right = nullptr;
         }
 
         Node(Node* node) {
-            this->m_left = node->GetLeftNode();
+            this->m_pointer = node->GetLeftNode();
             this->m_right = node->GetRightNode();
             this->m_val = node->ReturnValue();
         }
@@ -40,17 +40,17 @@ template<typename T> class Node {
         }
 
         Node* GetLeftNode() {
-            return m_left;
+            return m_pointer;
         }
 
         void SetLeftNode(Node* n) {
-            m_left = n;
+            m_pointer = n;
         }
 
     private:
         T m_val;
         Node* m_right;
-        Node* m_left;
+        Node* m_pointer;
 
         // std::shared_ptr<Node>m_right();
 };
