@@ -1,11 +1,10 @@
 #include <vector>
 
-template<class T>
 class Graph{
     public:
         Graph(){
-            nodes = 100;
-            grph( nodes , vector<int>( nodes , 0 ) );
+            nodes = 5;
+            vector< vector<int> > grph( nodes , vector<int>( nodes , 0 ) );
         }
 
         void addEdge( int i , int j ){
@@ -25,7 +24,7 @@ class Graph{
 
         vector<int> outEdges( int i ){
             vector<int> temp;
-            for( int k = 0 , k < nodes , k++ ){
+            for( int k = 0 ; k < nodes ; k++ ){
                 if( grph[i][k] == 1 ){
                     temp.push_back( k );
                 }
@@ -35,7 +34,7 @@ class Graph{
 
         vector<int> inEdges( int i ){
             vector<int> temp;
-            for( int k = 0 , k < nodes , k++ ){
+            for( int k = 0 ; k < nodes ; k++ ){
                 if( grph[k][i] == 1 ){
                     temp.push_back( k );
                 }
@@ -46,14 +45,14 @@ class Graph{
         void PrintOutAdjacencyMatrix(){
             
             cout << "  ";
-            for( int k = 0 , k < nodes , k++ ){
+            for( int k = 0 ; k < nodes ; k++ ){
                 cout << k << " ";
             }
             cout << endl;
 
-            for( int k = 0 , k < nodes , k++ ){
+            for( int k = 0 ; k < nodes ; k++ ){
                 cout << k << " ";
-                for( int l = 0 , l < nodes , l++ ){
+                for( int l = 0 ; l < nodes ; l++ ){
                     if( this->hasEdge( k , l ) ){
                         cout << "1 ";
                     } else {
