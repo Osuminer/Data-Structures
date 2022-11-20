@@ -13,6 +13,29 @@ class Monk : public ICharacter {
         m_speed = 5;
     }
 
+    virtual double GetHealth() override {
+        double retVal = m_health + m_race->GetHealthMod();
+        return retVal;
+    }
+    virtual double GetArmor() override {
+        double retVal = m_armor + m_race->GetArmorMod();
+        return retVal;
+    }
+    virtual double GetDamage() override {
+        double retVal = m_damage + m_race->GetDamageMod();
+        return retVal;
+    }
+    virtual double GetCrit() override {
+        double retVal = m_crit + m_race->GetCritChanceMod();
+        return retVal;
+    }
+    virtual double GetSpeed() override {
+        double retVal = m_speed + m_race->GetSpeedMod();
+        return retVal;
+    }
+
+    Monk() = delete;
+
     virtual ~Monk();
 
     

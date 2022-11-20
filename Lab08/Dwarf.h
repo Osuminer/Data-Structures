@@ -2,7 +2,7 @@
 
 #include "IRace.h"
 
-class Dwarf : IRace {
+class Dwarf : public IRace {
     public:
 
         Dwarf() : IRace(15,15,2,7,6){}

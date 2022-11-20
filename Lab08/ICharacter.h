@@ -14,11 +14,11 @@ class ICharacter {
             m_race = race;
         }
 
-        double GetHealth(){return m_health;}
-        double GetArmor(){return m_armor;}
-        double GetDamage(){return m_damage;}
-        double GetSpeed(){return m_speed;}
-        double GetCrit(){return m_crit;}
+        virtual double GetHealth() = 0;
+        virtual double GetArmor() = 0;
+        virtual double GetDamage() = 0;
+        virtual double GetSpeed() = 0;
+        virtual double GetCrit() = 0;
 
     protected:
         std::shared_ptr<IRace> m_race;

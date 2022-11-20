@@ -2,7 +2,7 @@
 
 #include "IRace.h"
 
-class Human : IRace {
+class Human : public IRace {
     public:
 
         Human() : IRace(5,5,5,5,5){}
