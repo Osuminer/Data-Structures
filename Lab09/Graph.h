@@ -7,7 +7,7 @@ class Graph{
     public:
         Graph(){
             nodes = 5;
-            std::vector< std::vector<int> > grph( nodes , std::vector<int>( nodes , 0 ) );
+            grph = std::vector< std::vector<int> > ( nodes , std::vector<int>( nodes , 0 ) );
         }
 
         void addEdge( int i , int j ){
@@ -47,6 +47,8 @@ class Graph{
 
         void PrintOutAdjacencyMatrix(){
             
+
+            // organize graph -------------------------------------------
             cout << "  ";
             for( int k = 0 ; k < nodes ; k++ ){
                 cout << k << " ";
@@ -54,9 +56,15 @@ class Graph{
             cout << endl;
 
             for( int k = 0 ; k < nodes ; k++ ){
-                cout << k << " ";
+                cout << "-";
+            }
+            cout << endl;
+
+            // Graphing values -------------------------------------------
+            for( int e = 0 ; e < nodes ; e++ ){
+                cout << e << "| ";
                 for( int l = 0 ; l < nodes ; l++ ){
-                    if( this->hasEdge( k , l ) ){
+                    if( this->hasEdge( e , l ) ){
                         cout << "1 ";
                     } else {
                         cout << "0 ";
