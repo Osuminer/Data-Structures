@@ -8,7 +8,7 @@ int main() {
 int x = 0;
 Graph g;
 
-/*
+
 while( x != 7 ){
 
     cout << "Press 1 to add an edge to graph. " << endl
@@ -52,7 +52,11 @@ while( x != 7 ){
         cout << "enter second node " << endl;
         cin >> j;
 
-        g.hasEdge( i , j );
+        if( g.hasEdge( i , j ) ){
+            cout << i << " and " << j << " does have an edge" << endl;
+        } else {
+            cout << i << " and " << j << " does not have an edge" << endl;
+        }
 
     } else if( x == 4 ){
         int i;
@@ -60,7 +64,21 @@ while( x != 7 ){
         cout << "enter node " << endl;
         cin >> i;
 
-        g.outEdges( i );
+        vector<int> temp = g.outEdges( i );
+
+        if( !temp.empty() ){
+            cout << "node " << i << " has out edges at:";
+
+            for( int k = 0 ; k < temp.size() ; k++ ){
+                cout << " " << temp[k];
+            }
+
+
+        } else {
+            cout << "node " << i << " has no out edges";
+        }
+   
+        cout << endl;
 
     } else if( x == 5 ){
         int i;
@@ -68,16 +86,29 @@ while( x != 7 ){
         cout << "enter node " << endl;
         cin >> i;
 
-        g.inEdges( i );
+        vector<int> temp = g.inEdges( i );
+
+        if( !temp.empty() ){
+            cout << "node " << i << " has in edges at:";
+
+            for( int k = 0 ; k < temp.size() ; k++ ){
+                cout << " " << temp[k];
+            }
+
+
+        } else {
+            cout << "node " << i << " has no in edges";
+        }
+   
+        cout << endl;
 
     } else if( x == 6 ){
         g.PrintOutAdjacencyMatrix();
     }
 
 
-} */
+} 
 
-g.PrintOutAdjacencyMatrix();
 
 return 0;
 
