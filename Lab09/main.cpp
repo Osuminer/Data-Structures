@@ -8,6 +8,7 @@ int main() {
 int x = 0;
 Graph g;
 
+/*
 while( x != 7 ){
 
     cout << "Press 1 to add an edge to graph. " << endl
@@ -68,13 +69,15 @@ while( x != 7 ){
         cin >> i;
 
         g.inEdges( i );
-        
+
     } else if( x == 6 ){
         g.PrintOutAdjacencyMatrix();
     }
 
 
-}
+} */
+
+g.PrintOutAdjacencyMatrix();
 
 return 0;
 

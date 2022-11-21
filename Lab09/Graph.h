@@ -7,7 +7,7 @@ class Graph{
     public:
         Graph(){
             nodes = 5;
-            vector< vector<int> > grph( nodes , vector<int>( nodes , 0 ) );
+            std::vector< std::vector<int> > grph( nodes , std::vector<int>( nodes , 0 ) );
         }
 
         void addEdge( int i , int j ){
@@ -25,8 +25,8 @@ class Graph{
             return false;
         }
 
-        vector<int> outEdges( int i ){
-            vector<int> temp;
+        std::vector<int> outEdges( int i ){
+            std::vector<int> temp;
             for( int k = 0 ; k < nodes ; k++ ){
                 if( grph[i][k] == 1 ){
                     temp.push_back( k );
@@ -35,8 +35,8 @@ class Graph{
             return temp;
         }
 
-        vector<int> inEdges( int i ){
-            vector<int> temp;
+        std::vector<int> inEdges( int i ){
+            std::vector<int> temp;
             for( int k = 0 ; k < nodes ; k++ ){
                 if( grph[k][i] == 1 ){
                     temp.push_back( k );
