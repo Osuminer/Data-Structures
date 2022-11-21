@@ -21,11 +21,11 @@ std::shared_ptr<ICharacter> CharacterFactory::CreateCharacter(enumOfCharacters c
     
     if (character == BarbarianType) {
         retVal = std::make_shared<Barbarian>(m_raceMap[race], party);
-    } else if (character = MonkType) {
+    } else if (character == MonkType) {
         retVal = std::make_shared<Monk>(m_raceMap[race], party);
-    } else if (character = WizardType) {
+    } else if (character == WizardType) {
         retVal = std::make_shared<Wizard>(m_raceMap[race], party);
-    } else if (character = PaladinType) {
+    } else if (character == PaladinType) {
         retVal = std::make_shared<Paladin>(m_raceMap[race], party);
     }
 
