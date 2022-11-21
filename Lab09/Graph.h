@@ -1,82 +1,45 @@
 #include <vector>
+#include <iostream>
 
-template<typename T> class Node {
-    public:
-        Node() {
-            m_pointer = nullptr;
-        }
+using namespace std;
 
-        Node(T val) {
-            m_val = val;
-        }
-
-        ~Node() {}
-
-        T ReturnValue() {
-            return m_val;
-        }
-
-        void SetValue(T v) {
-            m_val = v;
-        }
-
-    private:
-        T m_val;
-        Node* m_pointer;
-
-        // std::shared_ptr<Node>m_right();
-};
-
-template<class T>
 class Graph{
     public:
-        
-        Graph( vector<Node> a, vector<int> b1, vector<int> b2 ){
-            v = a;
-            e1 = b1;
-            e2 = b2;
+        Graph(){
+            nodes = 5;
+            std::vector< std::vector<int> > grph( nodes , std::vector<int>( nodes , 0 ) );
         }
 
-        void addEdge( int i, int j ){
-            e1.push_back(i);
-            e2.push_back(j);
+        void addEdge( int i , int j ){
+            grph[i][j] = 1;
         }
 
-        void removeEdge( int i, int j ){
-            for( int k = 0, i < e1.size(), k++){
-                if( e1.at(k) ==  i && e2.at(k) == j ){
-                    e1[k].erase();
-                    e2[k].erase();
-                    return;
-                }
-            }
-            return;
+        void removeEdge( int i , int j ){
+            grph[i][j] = 0;
         }
 
-        bool hasEdge( int i, int j ){
-            for( int k = 0, k < e1.size(), k++){
-                if( e1.at(k) ==  i && e2.at(k) == j ){
-                    return true;
-                }
-            }
+        bool hasEdge( int i , int j ){
+            if( grph[i][j] == 1 ){
+                return true;
+            } 
             return false;
         }
 
-        vector<int> outEdges( int i ){
-            vector<int> temp;
-            for( int k = 0, k < e1.size(), k++){
-                if( e1.at(k) ==  i ){
-                    temp.push_back(e2.at(k));
+        std::vector<int> outEdges( int i ){
+            std::vector<int> temp;
+            for( int k = 0 ; k < nodes ; k++ ){
+                if( grph[i][k] == 1 ){
+                    temp.push_back( k );
                 }
             }
             return temp;
         }
 
-        vector<int> inEdges( int j ){
-            vector<int> temp;
-            for( int k = 0, k < e1.size(), k++){
-                if( e2.at(k) ==  j ){
-                    temp.push_back(e1.at(k));
+        std::vector<int> inEdges( int i ){
+            std::vector<int> temp;
+            for( int k = 0 ; k < nodes ; k++ ){
+                if( grph[k][i] == 1 ){
+                    temp.push_back( k );
                 }
             }
             return temp;
@@ -85,15 +48,15 @@ class Graph{
         void PrintOutAdjacencyMatrix(){
             
             cout << "  ";
-            for( int k = 0, k < v.size(), i++ ){
-                cout << v.at(k).ReturnValue() << " ";
+            for( int k = 0 ; k < nodes ; k++ ){
+                cout << k << " ";
             }
             cout << endl;
 
-            for( int k = 0, k < v.size(), i++ ){
-                cout << v.at(k).ReturnValue() << " ";
-                for( int l = 0, l < v.size(), l++ ){
-                    if( this->hasEdge( v.at(k).ReturnValue() , v.at(l).ReturnValue() ) = true ){
+            for( int k = 0 ; k < nodes ; k++ ){
+                cout << k << " ";
+                for( int l = 0 ; l < nodes ; l++ ){
+                    if( this->hasEdge( k , l ) ){
                         cout << "1 ";
                     } else {
                         cout << "0 ";
@@ -101,13 +64,11 @@ class Graph{
                 }
                 cout << endl;
             }
-
         }
+
         ~Graph();
 
     private:
-        vector<Node> v;
-        vector<int> e1;
-        vector<int> e2;
-
+        int nodes;
+        std::vector< std::vector<int> > grph;
 };
