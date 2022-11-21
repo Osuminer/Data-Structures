@@ -16,6 +16,18 @@ The data type being stored is to be Template, and the key will be a int.  For th
 1.	The HashTable class should have the following methods fully implemented.
   *	Constructor –  No default constructor.  The construsctor will have an input indicating the maximum number of items the Hash table can store.  
   *	Hash – This should normally is private function that accepts a int and returns an int.  But for testing purposes make it public. For this, we are going to take the modulus by the maximum size of the table.
+  Normally we would depend upon the hash function being defined for the class type.  But in this case we are going to cheat and force it be int, but keep the Template declations.  So use this as your Hash method.
+```c++
+  template<class keyType, class valueType>
+  int hash_table<keyType,valueType>::hash(keyType& key)
+  {
+    //take keytype casted to an int and modulus with max size
+    int return_value;
+    int temp = (int)key;
+    return_value = temp % max_size;
+   }
+```
+  
   *	AddItem – adds an item to list.
   *	GetItem – searches the list for a given item.  If found, it returns a pointer to the item but doesn’t remove it from the list.
   *	Contains – returns an int indicating the number of items in the table.
