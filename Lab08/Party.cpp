@@ -10,7 +10,7 @@ void Party::AddCharacter(std::shared_ptr<ICharacter> characterToAdd) {
 
 bool Party::isDead() {
     for (auto it = m_party.begin(); it != m_party.end(); it++) {
-        if ((*it)->GetHealth() <= 0) {
+        if ((*it)->GetHealth() > 0) {
             return false;
         }
     }

@@ -34,19 +34,16 @@ bool IsGameOver(std::shared_ptr<Party> party1, std::shared_ptr<Party> party2) {
 }
 
 
-void Attack(std::shared_ptr<ICharacter> attacker, std::shared_ptr<ICharacter> enemy) {
-    enemy->SetHealth(enemy->GetHealth() - (attacker->GetDamage() / enemy->GetArmor()));
+void Attack(std::shared_ptr<ICharacter> attacker, std::shared_ptr<ICharacter> target) {
+    target->SetHealth(target->GetHealth() - (attacker->GetDamage() / target->GetArmor()));
 }
 
 
 int main() {
     bool isGameEnded;
 
-    Party party11;
-    Party party22;
-
-    std::shared_ptr<Party> party1 = std::make_shared<Party>(party11);
-    std::shared_ptr<Party> party2 = std::make_shared<Party>(party22);
+    std::shared_ptr<Party> party1 = std::make_shared<Party>();
+    std::shared_ptr<Party> party2 = std::make_shared<Party>();
     std::shared_ptr<ICharacter> c;
     std::map<double, std::shared_ptr<ICharacter>> turnList;
 
@@ -55,7 +52,6 @@ int main() {
 
     // Gen Paladin-Human
     c = CharacterFactory::GetCharacterFactory().CreateCharacter(CharacterFactory::PaladinType, CharacterFactory::HumanType, party1);
-    // std::shared_ptr<Paladin> paladin = std::dynamic_pointer_cast<Paladin>(c);
     auto paladin = c;
     
     turnList.insert(std::pair(paladin->GetSpeed(), paladin));
@@ -63,7 +59,6 @@ int main() {
 
     // Gen Barbarian-Halfling
     c = CharacterFactory::GetCharacterFactory().CreateCharacter(CharacterFactory::BarbarianType, CharacterFactory::HalflingType, party1);
-    // std::shared_ptr<Barbarian> barbarian = std::dynamic_pointer_cast<Barbarian>(c);
     auto barbarian = c;
     
     turnList.insert(std::pair(barbarian->GetSpeed(), barbarian));
@@ -71,7 +66,6 @@ int main() {
 
     // Gen Wizard-Human
     c = CharacterFactory::GetCharacterFactory().CreateCharacter(CharacterFactory::WizardType, CharacterFactory::ElfType, party1);
-    // std::shared_ptr<Wizard> wizard = std::dynamic_pointer_cast<Wizard>(c);
     auto wizard = c;
 
     turnList.insert(std::pair(wizard->GetSpeed(), wizard));
@@ -82,7 +76,6 @@ int main() {
 
     // Gen Paladin-Human
     c = CharacterFactory::GetCharacterFactory().CreateCharacter(CharacterFactory::PaladinType, CharacterFactory::DwarfType, party2);
-    // std::shared_ptr<Paladin> paladin2 = std::dynamic_pointer_cast<Paladin>(c);
     auto paladin2 = c;
 
     turnList.insert(std::pair(paladin2->GetSpeed(), paladin2));
@@ -90,7 +83,6 @@ int main() {
 
     // Gen Barbarian-Halfling
     c = CharacterFactory::GetCharacterFactory().CreateCharacter(CharacterFactory::BarbarianType, CharacterFactory::HumanType, party2);
-    // std::shared_ptr<Barbarian> barbarian2 = std::dynamic_pointer_cast<Barbarian>(c);
     auto barbarian2 = c;
 
     turnList.insert(std::pair(barbarian2->GetSpeed(), barbarian2));
@@ -98,13 +90,10 @@ int main() {
 
     // Gen Monk-Halfling
     c = CharacterFactory::GetCharacterFactory().CreateCharacter(CharacterFactory::MonkType, CharacterFactory::HalflingType, party2);
-    // std::shared_ptr<Monk> monk2 = std::dynamic_pointer_cast<Monk>(c);
     auto monk2 = c;
 
     turnList.insert(std::pair(monk2->GetSpeed(), monk2));
     party2->AddCharacter(monk2);
-
-    //TODO: Remove said characters from list if their health < 0
 
     // Game loop start -------------------------------------------------------------------------------------------------------------------
     while (!isGameEnded) {
@@ -122,13 +111,12 @@ int main() {
                 target = party1Target;
             }
 
+            if (it->second->GetHealth() > 0) {
             Attack(it->second, target);
-            std::cout << it->second << " attacks " << target << " for " << it->second->GetDamage() << std::endl;
+            std::cout << it->second << " attacks " << target << " for " << it->second->GetDamage() / target->GetArmor() << std::endl;
+            std:: cout << "--->" << target << "'s health is now: " << target->GetHealth() << "\n" << std::endl;
+            }
         }
-
-    // for (auto it = turnList.rbegin(); it != turnList.rend(); it++) {
-    //     std::cout << it->first << " : " << it->second << std::endl;
-    // }
 
         isGameEnded = IsGameOver(party1, party2);
     }
