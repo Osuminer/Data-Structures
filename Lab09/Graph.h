@@ -66,7 +66,7 @@ class Graph{
             }
         }
 
-        ~Graph();
+        ~Graph() {}
 
     private:
         int nodes;
