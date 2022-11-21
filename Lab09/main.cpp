@@ -23,37 +23,52 @@ while( x != 7 ){
     if( x == 1 ){
         int i;
         int j;
+
         cout << "enter first node " << endl;
         cin >> i;
         cout << "enter second node " << endl;
         cin >> j;
+
         g.addEdge( i , j );
+
     } else if( x == 2 ){
         int i;
         int j;
+
         cout << "enter first node " << endl;
         cin >> i;
         cout << "enter second node " << endl;
         cin >> j;
+
         g.removeEdge( i , j );
+
     } else if( x == 3 ){
         int i;
         int j;
+
         cout << "enter first node " << endl;
         cin >> i;
         cout << "enter second node " << endl;
         cin >> j;
+
         g.hasEdge( i , j );
+
     } else if( x == 4 ){
         int i;
+
         cout << "enter node " << endl;
         cin >> i;
+
         g.outEdges( i );
+
     } else if( x == 5 ){
         int i;
+
         cout << "enter node " << endl;
         cin >> i;
+
         g.inEdges( i );
+        
     } else if( x == 6 ){
         g.PrintOutAdjacencyMatrix();
     }
@@ -61,5 +76,6 @@ while( x != 7 ){
 
 }
 
+return 0;
 
 }
