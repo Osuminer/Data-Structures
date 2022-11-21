@@ -1,4 +1,7 @@
 #include <vector>
+#include <iostream>
+
+using namespace std;
 
 class Graph{
     public:
@@ -67,5 +70,5 @@ class Graph{
 
     private:
         int nodes;
-        vector< vector<int> > grph;
+        std::vector< std::vector<int> > grph;
 };
