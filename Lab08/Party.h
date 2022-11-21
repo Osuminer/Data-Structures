@@ -9,14 +9,11 @@ class Party {
     public:
         Party();
 
-        void AddFrontRow(std::shared_ptr<ICharacter>);
-        void AddBackRow(std::shared_ptr<ICharacter>);
-
-        bool IsFrontDead();
+        void AddCharacter(std::shared_ptr<ICharacter>);
+        bool isDead();
+        std::shared_ptr<ICharacter> FindTarget(); 
 
     private:
         int m_size;
-        
-        std::vector<std::shared_ptr<ICharacter>> m_frontRow;
-        std::vector<std::shared_ptr<ICharacter>> m_backRow;
+        std::vector<std::shared_ptr<ICharacter>> m_party;
 };

@@ -16,17 +16,17 @@ CharacterFactory& CharacterFactory::GetCharacterFactory() {
     return c;
 }
 
-std::shared_ptr<ICharacter> CharacterFactory::CreateCharacter(enumOfCharacters character, raceOfCharacters race) {
+std::shared_ptr<ICharacter> CharacterFactory::CreateCharacter(enumOfCharacters character, raceOfCharacters race, std::shared_ptr<Party> party) {
     std::shared_ptr<ICharacter> retVal = nullptr;
     
     if (character == BarbarianType) {
-        retVal = std::make_shared<Barbarian>(m_raceMap[race]);
+        retVal = std::make_shared<Barbarian>(m_raceMap[race], party);
     } else if (character = MonkType) {
-        retVal = std::make_shared<Monk>(m_raceMap[race]);
+        retVal = std::make_shared<Monk>(m_raceMap[race], party);
     } else if (character = WizardType) {
-        retVal = std::make_shared<Wizard>(m_raceMap[race]);
+        retVal = std::make_shared<Wizard>(m_raceMap[race], party);
     } else if (character = PaladinType) {
-        retVal = std::make_shared<Paladin>(m_raceMap[race]);
+        retVal = std::make_shared<Paladin>(m_raceMap[race], party);
     }
 
     return retVal;

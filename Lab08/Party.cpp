@@ -1,9 +1,27 @@
 #include "Party.h"
+#include "ICharacter.h"
 
-void Party::AddFrontRow(std::shared_ptr<ICharacter> characterToAdd) {
-    m_frontRow.push_back(characterToAdd);
+Party::Party() {}
+
+void Party::AddCharacter(std::shared_ptr<ICharacter> characterToAdd) {
+    m_party.push_back(characterToAdd);
+    m_size++;
 }
 
-void Party::AddBackRow(std::shared_ptr<ICharacter> characterToAdd) {
-    m_backRow.push_back(characterToAdd);
+bool Party::isDead() {
+    for (auto it = m_party.begin(); it != m_party.end(); it++) {
+        if ((*it)->GetHealth() <= 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+std::shared_ptr<ICharacter> Party::FindTarget() {
+    for (auto it = m_party.begin(); it != m_party.end(); it++) {
+        if ((*it)->GetHealth() > 0) {
+            return *it;
+        }
+    }
 }
