@@ -6,7 +6,11 @@
 template <typename KeyType, typename DataType>
 class HashTable {
     public:
+        /// @brief No default constructor
         HashTable() = delete;
+
+        /// @brief Constructor for max size input
+        /// @param maxSize The max size of the table
         HashTable(int maxSize) {
             m_maxSize = maxSize;
             m_table.resize(m_maxSize);
@@ -14,11 +18,23 @@ class HashTable {
 
         ~HashTable() {}
 
+        /// @brief Return the int hash of the key
+        /// @param key The key value
+        /// @return 
         int Hash(KeyType& key) {
             int retVal = (int)key % m_maxSize;
             return retVal;
         }
 
+        /// @brief Bad hash function that only returns 0
+        /// @param key The key value
+        /// @return 
+        int BadHash(KeyType& key) {
+            return 0;
+        }
+
+        /// @brief Add an item into the hash table via linear probing
+        /// @param item Item to add
         void AddItem(DataType& item) {
             int place = Hash(item.key);
             while (m_table.at(place).data != item.data && m_table.at(place).key != -1){
@@ -32,6 +48,9 @@ class HashTable {
             m_size++;
         }
 
+        /// @brief Returns the item from the hash table
+        /// @param item The item to find
+        /// @return 
         DataType* GetItem(DataType& item) {
             int place = Hash(item.key);
             while (m_table.at(place).data != item.data && m_table.at(place).key != -1){
@@ -45,8 +64,16 @@ class HashTable {
             return &m_table.at(place);
         }
 
+        /// @brief Returns the number of items in the hash table
+        /// @return 
         int Contains() {
             return m_size;
+        }
+
+        /// @brief Returns the hash table, used for testing
+        /// @return 
+        std::vector<DataType> GetTable() {
+            return m_table;
         }
 
 
