@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <cstddef>
 
 template <typename KeyType, typename DataType>
 class HashTable {
@@ -11,20 +12,38 @@ class HashTable {
             m_table.resize(m_maxSize);
         }
 
-        ~HashTable();
+        ~HashTable() {}
 
         int Hash(KeyType& key) {
-            return (int)key % m_maxSize;
+            int retVal = (int)key % m_maxSize;
+            return retVal;
         }
 
         void AddItem(DataType& item) {
-            int place = Hash(item);
-            while (m_table.at(place).data != item.data){
-                place++;
+            int place = Hash(item.key);
+            while (m_table.at(place).data != item.data && m_table.at(place).key != -1){
+                if (place >= m_maxSize) {
+                    place = 0;
+                } else {
+                    place++;
+                }
             }
             m_table.at(place) = item;
+            m_size++;
         }
-        DataType* GetItem(KeyType&);
+
+        DataType* GetItem(DataType& item) {
+            int place = Hash(item.key);
+            while (m_table.at(place).data != item.data && m_table.at(place).key != -1){
+                if (place >= m_maxSize) {
+                    place = 0;
+                } else {
+                    place++;
+                }
+            }
+
+            return &m_table.at(place);
+        }
 
         int Contains() {
             return m_size;
