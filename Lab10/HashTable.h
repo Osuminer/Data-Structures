@@ -8,16 +8,21 @@ class HashTable {
         HashTable() = delete;
         HashTable(int maxSize) {
             m_maxSize = maxSize;
+            m_table.resize(m_maxSize);
         }
 
         ~HashTable();
 
-        int Hash(KeyType key) {
+        int Hash(KeyType& key) {
             return (int)key % m_maxSize;
         }
 
         void AddItem(DataType& item) {
-
+            int place = Hash(item);
+            while (m_table.at(place).data != item.data){
+                place++;
+            }
+            m_table.at(place) = item;
         }
         DataType* GetItem(KeyType&);
 

@@ -2,7 +2,7 @@
 #include "Node.h"
 
 int main() {
-
+    HashTable<int, int> h(5);
 
     
 }

@@ -3,6 +3,6 @@
 template <typename T>
 class Node {
     public:
-        T key;
-        Node data;
+        int key;
+        T data;
 };
