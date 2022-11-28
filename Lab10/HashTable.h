@@ -1,7 +1,6 @@
 #pragma once
 
 #include <vector>
-#include <cstddef>
 
 template <typename KeyType, typename DataType>
 class HashTable {
