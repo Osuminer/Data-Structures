@@ -85,6 +85,10 @@ class HashTable {
             return m_size;
         }
 
+        int GetMaxSize() {
+            return m_maxSize;
+        }
+
     private:
         int m_size = 0;
         int m_maxSize;

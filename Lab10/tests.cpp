@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include <cmath>
 #include "HashTable.h"
 #include "Node.h"
 
@@ -28,13 +29,13 @@ TEST(Hash, Hash1) {
     HashTable<int, Node<int>> h(5);
     Node<int> a(8, 3);
 
-    ASSERT_EQ(h.Hash(a.key), 0);
+    ASSERT_EQ(h.Hash(a.key), 8 % h.GetMaxSize());
 }
 TEST(Hash, Hash2) {
     HashTable<int, Node<int>> h(5);
     Node<int> a(2, 6);
 
-    ASSERT_EQ(h.Hash(a.key), 2);
+    ASSERT_EQ(h.Hash(a.key), 2 % h.GetMaxSize());
 }
 
 // Contains ---------------------------------------------------------------------
