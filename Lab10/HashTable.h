@@ -47,6 +47,21 @@ class HashTable {
             m_size++;
         }
 
+        /// @brief Bad way to add item(hash is always 0)
+        /// @param item Item to add
+        void BadAddItem(DataType& item) {
+            int place = BadHash(item.key);
+            while (m_table.at(place).data != item.data && m_table.at(place).key != -1){
+                if (place >= m_maxSize) {
+                    place = 0;
+                } else {
+                    place++;
+                }
+            }
+            m_table.at(place) = item;
+            m_size++;
+        }
+
         /// @brief Returns pointer to the item from the hash table
         /// @param item The item to find
         /// @return 
