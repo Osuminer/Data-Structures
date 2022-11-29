@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <cmath>
 
 template <typename KeyType, typename DataType>
 class HashTable {
@@ -11,7 +12,7 @@ class HashTable {
         /// @brief Constructor for max size input
         /// @param maxSize The max size of the table
         HashTable(int maxSize) {
-            m_maxSize = maxSize;
+            m_maxSize = ceil(maxSize * 1.5);
             m_table.resize(m_maxSize);
         }
 

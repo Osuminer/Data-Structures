@@ -28,7 +28,7 @@ TEST(Hash, Hash1) {
     HashTable<int, Node<int>> h(5);
     Node<int> a(8, 3);
 
-    ASSERT_EQ(h.Hash(a.key), 3);
+    ASSERT_EQ(h.Hash(a.key), 0);
 }
 TEST(Hash, Hash2) {
     HashTable<int, Node<int>> h(5);
@@ -56,11 +56,6 @@ TEST(Contains, Contains2) {
     ASSERT_EQ(h.Contains(), 0);
 }
 
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
-
 // Get Item ---------------------------------------------------------------------
 TEST(GetItem, GetItem1) {
     HashTable<int, Node<int>> h(5);
@@ -81,4 +76,9 @@ TEST(GetItem, GetItem2) {
     h.AddItem(c);
 
     ASSERT_EQ(h.GetItem(c)->data, c.data);
+}
+
+int main(int argc, char **argv) {
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }
