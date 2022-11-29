@@ -16,7 +16,7 @@ TEST(Add, Add1) {
 TEST(Add, Add2) {
     HashTable<int, Node<int>> h(5);
     Node<int> a(8, 3);
-    Node<int> b(2, 6);
+    Node<int> b(0, 6);
 
     h.AddItem(a);
     h.AddItem(b);

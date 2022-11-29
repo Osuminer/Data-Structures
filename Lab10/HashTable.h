@@ -37,8 +37,8 @@ class HashTable {
         /// @param item Item to add
         void AddItem(DataType& item) {
             int place = Hash(item.key);
-            while (m_table.at(place).data != item.data && m_table.at(place).key != -1){
-                if (place >= m_maxSize) {
+            while (m_table.at(place).key != -1){
+                if (place >= m_maxSize-1) {
                     place = 0;
                 } else {
                     place++;
@@ -50,10 +50,10 @@ class HashTable {
 
         /// @brief Bad way to add item(hash is always 0)
         /// @param item Item to add
-        void BadAddItem(DataType& item) {
+     void BadAddItem(DataType& item) {
             int place = BadHash(item.key);
-            while (m_table.at(place).data != item.data && m_table.at(place).key != -1){
-                if (place >= m_maxSize) {
+            while (m_table.at(place).key != -1){
+                if (place >= m_maxSize-1) {
                     place = 0;
                 } else {
                     place++;
