@@ -47,7 +47,7 @@ class HashTable {
             m_size++;
         }
 
-        /// @brief Returns the item from the hash table
+        /// @brief Returns pointer to the item from the hash table
         /// @param item The item to find
         /// @return 
         DataType* GetItem(DataType& item) {
@@ -69,15 +69,8 @@ class HashTable {
             return m_size;
         }
 
-        /// @brief Returns the hash table, used for testing
-        /// @return 
-        std::vector<DataType> GetTable() {
-            return m_table;
-        }
-
-
     private:
-        int m_size;
+        int m_size = 0;
         int m_maxSize;
         std::vector<DataType> m_table;
 };
